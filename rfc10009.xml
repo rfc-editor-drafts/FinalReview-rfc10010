@@ -1,128 +1,65 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
+
 <!DOCTYPE rfc [
   <!ENTITY nbsp    "&#160;">
   <!ENTITY zwsp   "&#8203;">
   <!ENTITY nbhy   "&#8209;">
   <!ENTITY wj     "&#8288;">
 ]>
-<?rfc toc="yes"?>
-<?rfc symrefs="yes"?>
-<?rfc sortrefs="yes" ?>
-<?rfc compact="yes"?>
-<?rfc subcompact="no"?>
-<?rfc linkmailto="no" ?>
-<?rfc editing="no" ?>
-<?rfc comments="yes" ?>
-<?rfc inline="yes"?>
-<?rfc rfcedstyle="yes"?>
-<?rfc-ext allow-markup-in-artwork="yes" ?>
-<?rfc-ext include-index="no" ?>
-<!--<?rfc strict="no"?> -->
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" consensus="true" submissionType="IETF" ipr="trust200902" docName="draft-ietf-netconf-netconf-client-server-41" tocInclude="true" symRefs="true" sortRefs="true" version="3">
-  <!-- xml2rfc v2v3 conversion 3.31.0 -->
+
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" consensus="true" submissionType="IETF" ipr="trust200902" docName="draft-ietf-netconf-netconf-client-server-41" number="10009" updates="" obsoletes="" tocInclude="true" symRefs="true" sortRefs="true" version="3" xml:lang="en">
+
   <front>
     <title abbrev="YANG for NETCONF Clients and Servers">A YANG Data Model for NETCONF Clients and Servers</title>
-    <seriesInfo name="Internet-Draft" value="draft-ietf-netconf-netconf-client-server-41"/>
+    <seriesInfo name="RFC" value="10009"/>
     <author initials="K." surname="Watsen" fullname="Kent Watsen">
       <organization>Watsen Networks</organization>
       <address>
         <email>kent+ietf@watsen.net</email>
       </address>
     </author>
-    <date/>
-    <area>Operations</area>
-    <workgroup>NETCONF Working Group</workgroup>
+    <date year="2026" month="June"/>
+    <area>OPS</area>
+    <workgroup>netconf</workgroup>
+
     <abstract>
-      <t>This document presents two YANG modules, one module to
-          configure a NETCONF client and the other module to configure
-          a NETCONF server.  These modules support both the SSH and
-          TLS transport protocols, and support both standard NETCONF
+      <t>This document presents two YANG modules: one module to
+          configure a Network
+Configuration Protocol (NETCONF) client and the other module to configure
+          a NETCONF server.  These modules support both the Secure Shell (SSH) and
+          TLS transport protocols; they also support both standard NETCONF
           and NETCONF Call Home connections.</t>
     </abstract>
-    <note>
-      <name>Editorial Note (To be removed by RFC Editor)</name>
-      <t>This draft contains placeholder values that need to be replaced
-          with finalized values at the time of publication.  This note summarizes
-          all of the substitutions that are needed.  No other RFC Editor
-          instructions are specified elsewhere in this document.</t>
-      <t>Artwork in this document contains shorthand references to drafts in
-          progress.  Please apply the following replacements (note: not all may be present):
-      </t>
-      <ul spacing="normal">
-        <li>
-          <t><tt>GGGG</tt> --&gt; the assigned RFC value for draft-ietf-netconf-http-client-server</t>
-        </li>
-        <li>
-          <t><tt>HHHH</tt> --&gt; the assigned RFC value for this draft</t>
-        </li>
-        <li>
-          <t><tt>IIII</tt> --&gt; the assigned RFC value for draft-ietf-netconf-restconf-client-server</t>
-        </li>
-      </ul>
-      <t>Artwork in this document contains placeholder values for the date of publication of this
-        draft.  Please apply the following replacement:
-      </t>
-      <ul spacing="normal">
-        <li>
-          <t><tt>2025-12-04</tt> --&gt; the publication date of this draft</t>
-        </li>
-      </ul>
-      <t>The "Relation to other RFCs" section <xref target="collective-effort"/> contains
-          the text "one or more YANG modules" and, later, "modules".  This text is sourced
-          from a file in a context where it is unknown how many modules a draft defines.
-          The text is not wrong as is, but it may be improved by stating more directly how
-          many modules are defined.</t>
-      <t>The "Relation to other RFCs" section <xref target="collective-effort"/> contains
-          a self-reference to this draft, along with a corresponding reference in
-          the Appendix.  Please replace the self-reference in this section with "This RFC"
-          (or similar) and remove the self-reference in the "Normative/Informative References"
-          section, whichever it is in.</t>
-      <t>Tree-diagrams in this draft may use the '\' line-folding mode defined in RFC 8792.
-          However, nicer-to-the-eye is when the '\\' line-folding mode is used.  The AD suggested
-          suggested putting a request here for the RFC Editor to help convert "ugly" '\' folded
-          examples to use the '\\' folding mode.  "Help convert" may be interpreted as, identify
-          what looks ugly and ask the authors to make the adjustment.</t>
-      <t>Due to a bug in the pyang tool used to create tree diagrams, some "key" nodes appear as
-          optional (i.e., have a '?' postfix).  Ideally the '?' character is removed in the tree
-          diagrams for "key" nodes.  Recipe: search for lists using the string "* [", then note
-          the nodes appearing in the square brackets (e.g., "* [name]"), then look for matching child
-          nodes and remove the '?' characters (e.g., "name?" becomes "name").</t>
-      <t>The following Appendix section is to be removed prior to publication:
-      </t>
-      <ul spacing="normal">
-        <li>
-          <t><xref target="change-log"/>.  Change Log</t>
-        </li>
-      </ul>
-    </note>
+
   </front>
   <middle>
     <section>
+
+
       <name>Introduction</name>
-      <t>This document presents two YANG <xref target="RFC7950"/> modules, one module
+      <t>This document presents two YANG modules <xref target="RFC7950"/>: one module
         to configure a NETCONF <xref target="RFC6241"/> client and the other module
-        to configure a NETCONF server.  These modules support both NETCONF over
-        SSH <xref target="RFC6242"/> and NETCONF over TLS <xref target="RFC7589"/>
-        and NETCONF Call Home connections <xref target="RFC8071"/>.</t>
+        to configure a NETCONF server.  These modules support both NETCONF-over-SSH <xref target="RFC6242"/> and NETCONF-over-TLS <xref target="RFC7589"/>
+        as well as NETCONF Call Home connections <xref target="RFC8071"/>.</t>
       <section anchor="collective-effort">
-        <name>Relation to other RFCs</name>
-        <t>This document presents one or more YANG modules <xref target="RFC7950"/>
+        <name>Relation to Other RFCs</name>
+
+        <t>This document presents two YANG modules <xref target="RFC7950"/>
             that are part of a collection of RFCs that work together
             to, ultimately, support the configuration of both the clients
             and servers of both the NETCONF <xref target="RFC6241"/> and
             RESTCONF <xref target="RFC8040"/> protocols.</t>
         <t> Primary dependency relationships between the YANG groupings
-            defined in the various RFCs is presented in the below diagram.
-            In some cases, a draft may define secondary groupings that
+            defined in the various RFCs are presented in the below diagram.
+            In some cases, a document may define secondary groupings that
             introduce dependencies not illustrated in the diagram.
             The labels in the diagram are a shorthand name for the defining
-            RFC.  The citation reference for shorthand name is provided below
-            the diagram.</t>
+            RFC.  The citation reference for the shorthand name is provided in <xref target="LabelDiagram"/>.</t>
         <t>Please note that the arrows in the diagram point from referencer
             to referenced.  For example, the "crypto-types" RFC does not
             have any dependencies, whilst the "keystore" RFC depends on the
             "crypto-types" RFC.</t>
-        <artwork><![CDATA[
+    <figure><artwork align="left"><![CDATA[
                                crypto-types
                                  ^      ^
                                 /        \
@@ -144,11 +81,10 @@ tcp-client-server      |     /         |      |
    +-----------+    |        |              |      |       |
                |    |        |              |      |       |
                |    |        |              |      |       |
-            netconf-client-server       restconf-client-server
+            netconf-client-server       restconf-client-server]]></artwork></figure>
 
-]]></artwork>
-        <!-- RFC Editor: is there anyway to flush-left the table in PDF/HTML views? -->
-          <table>
+
+          <table align="left" anchor="LabelDiagram">
           <name>Label in Diagram to RFC Mapping</name>
           <tbody>
             <tr>
@@ -186,66 +122,73 @@ tcp-client-server      |     /         |      |
                 <xref target="RFC9645"/></td>
             </tr>
             <tr>
-              <td>http-client-server</td>
-              <td>
-                <xref target="I-D.ietf-netconf-http-client-server"/></td>
-            </tr>
-            <tr>
               <td>netconf-client-server</td>
               <td>
-                <xref target="I-D.ietf-netconf-netconf-client-server"/></td>
+                RFC 10009</td>
             </tr>
             <tr>
               <td>restconf-client-server</td>
               <td>
-                <xref target="I-D.ietf-netconf-restconf-client-server"/></td>
+                <xref target="RFC10010"/></td>
+            </tr>
+	     <tr>
+              <td>http-client-server</td>
+              <td>
+              <xref target="PRE-RFC10011"/></td>
             </tr>
           </tbody>
         </table>
       </section>
       <section>
         <name>Specification Language</name>
-        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
-            NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
-            "MAY", and "OPTIONAL" in this document are to be interpreted as
-            described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/>
-            when, and only when, they appear in all capitals, as shown here.</t>
+        <t>
+    The key words "<bcp14>MUST</bcp14>", "<bcp14>MUST NOT</bcp14>",
+    "<bcp14>REQUIRED</bcp14>", "<bcp14>SHALL</bcp14>", "<bcp14>SHALL
+    NOT</bcp14>", "<bcp14>SHOULD</bcp14>", "<bcp14>SHOULD NOT</bcp14>",
+    "<bcp14>RECOMMENDED</bcp14>", "<bcp14>NOT RECOMMENDED</bcp14>",
+    "<bcp14>MAY</bcp14>", and "<bcp14>OPTIONAL</bcp14>" in this document are
+    to be interpreted as described in BCP&nbsp;14 <xref target="RFC2119"/>
+    <xref target="RFC8174"/> when, and only when, they appear in all capitals,
+    as shown here.
+        </t>
       </section>
+
       <section>
         <name>Adherence to the NMDA</name>
         <t>This document is compliant with the Network Management Datastore
             Architecture (NMDA) <xref target="RFC8342"/>.  For instance, as
             described in <xref target="RFC9641"/> and <xref target="RFC9642"/>,
             trust anchors and keys installed during manufacturing are expected to appear
-            in &lt;operational&gt; (<xref section="5.3" target="RFC8342"/>), and &lt;system&gt;
-            <xref target="I-D.ietf-netmod-system-config"/>, if implemented.</t>
+            in &lt;operational&gt; (<xref section="5.3" target="RFC8342"/>) and &lt;system&gt;
+            <xref target="I-D.ietf-netmod-system-config"/> if implemented.</t>
       </section>
     </section>
     <section anchor="netconf-client-model">
-      <name>The "ietf-netconf-client" Module</name>
-      <t>The NETCONF client data model presented in this section supports
-        both clients initiating connections to servers, as well as
+      <name>The "ietf-netconf-client" YANG Module</name>
+      <t>The NETCONF client YANG data model presented in this section supports
+        both clients initiating connections to servers and
         clients listening for connections from servers calling home,
-        using either the SSH and TLS transport protocols.</t>
+        using either the SSH or TLS transport protocol.</t>
       <t>YANG feature statements are used to enable implementations to
         advertise which potentially uncommon parts of the data model the
         NETCONF client supports.</t>
       <section anchor="netconf-client-tree">
         <name>Data Model Overview</name>
         <t>This section provides an overview of the "ietf-netconf-client"
-            module in terms of its features and groupings.</t>
+            YANG module in terms of its features and groupings.</t>
         <section anchor="client-features" toc="exclude">
           <name>Features</name>
           <t>The following diagram lists all the "feature" statements
-              defined in the "ietf-netconf-client" module:</t>
-          <artwork><![CDATA[
+          defined in the "ietf-netconf-client" module:</t>
+	  
+          <sourcecode type="yangtree"><![CDATA[
 Features:
   +-- ssh-initiate
   +-- tls-initiate
   +-- ssh-listen
   +-- tls-listen
-  +-- central-netconf-client-supported
-                  ]]></artwork>
+  +-- central-netconf-client-supported]]></sourcecode>
+
           <!--<aside>-->
               <t>The diagram above uses syntax that is similar to but not
                 defined in <xref target="RFC8340"/>.</t>
@@ -289,7 +232,7 @@ HIDE_TEXT_FROM_FILE(refs/tree-netconf-client-grouping.no-expand.txt)
             <name>The "netconf-client-initiate-stack-grouping" Grouping</name>
             <t>The following tree diagram <xref target="RFC8340"/> illustrates the
                 "netconf-client-initiate-stack-grouping" grouping:</t>
-            <artwork><![CDATA[
+            <sourcecode type="yangtree"><![CDATA[
   grouping netconf-client-initiate-stack-grouping:
     +-- (transport)
        +--:(ssh) {ssh-initiate}?
@@ -307,20 +250,18 @@ HIDE_TEXT_FROM_FILE(refs/tree-netconf-client-grouping.no-expand.txt)
              +-- tls-client-parameters
              |  +---u tlsc:tls-client-grouping
              +-- netconf-client-parameters
-                +---u ncc:netconf-client-grouping
-]]></artwork>
+                +---u ncc:netconf-client-grouping]]></sourcecode>
             <t>Comments:</t>
             <ul>
               <li>The "netconf-client-initiate-stack-grouping" defines the
-                  configuration for a full NETCONF protocol stack, for NETCONF
-                  clients that initiate connections to NETCONF servers, as
-                  opposed to receiving call-home <xref target="RFC8071"/>
-                  connections.</li>
+                  configuration for a full NETCONF protocol stack for NETCONF
+                  clients that initiate connections to NETCONF servers (as
+                  opposed to receiving call-home connections).</li>
               <li>The "transport" choice node enables either the SSH or
-                  TLS transports to be configured, with each option
+                  TLS transport to be configured, with each option
                   enabled by a "feature" statement.</li>
               <li>
-                <t>For the referenced grouping statement(s):
+                <t>For the referenced grouping statements:
                 </t>
                 <ul spacing="compact">
                   <li>The "tcp-client-grouping" grouping is discussed in
@@ -339,7 +280,7 @@ HIDE_TEXT_FROM_FILE(refs/tree-netconf-client-grouping.no-expand.txt)
             <name>The "netconf-client-listen-stack-grouping" Grouping</name>
             <t>The following tree diagram <xref target="RFC8340"/> illustrates the
                 "netconf-client-listen-stack-grouping" grouping:</t>
-            <artwork><![CDATA[
+            <sourcecode type="yangtree"><![CDATA[
   grouping netconf-client-listen-stack-grouping:
     +-- (transport)
        +--:(ssh) {ssh-listen}?
@@ -357,19 +298,17 @@ HIDE_TEXT_FROM_FILE(refs/tree-netconf-client-grouping.no-expand.txt)
              +-- tls-client-parameters
              |  +---u tlsc:tls-client-grouping
              +-- netconf-client-parameters
-                +---u ncc:netconf-client-grouping
-]]></artwork>
+                +---u ncc:netconf-client-grouping]]></sourcecode>
             <t>Comments:</t>
             <ul>
               <li>The "netconf-client-listen-stack-grouping" defines the
-                  configuration for a full NETCONF protocol stack, for NETCONF
-                  clients that receive call-home <xref target="RFC8071"/>
-                  connections from NETCONF servers.</li>
+                  configuration for a full NETCONF protocol stack for NETCONF
+                  clients that receive call-home connections from NETCONF servers.</li>
               <li>The "transport" choice node enables either the SSH or
-                  TLS transports to be configured, with each option
+                  TLS transport to be configured, with each option
                   enabled by a "feature" statement.</li>
               <li>
-                <t>For the referenced grouping statement(s):
+                <t>For the referenced grouping statements:
                 </t>
                 <ul spacing="compact">
                   <li>The "tcp-server-grouping" grouping is discussed in
@@ -387,15 +326,17 @@ HIDE_TEXT_FROM_FILE(refs/tree-netconf-client-grouping.no-expand.txt)
           <section anchor="netconf-client-app-grouping">
             <name>The "netconf-client-app-grouping" Grouping</name>
             <t>The following tree diagram <xref target="RFC8340"/> illustrates the
-                "netconf-client-app-grouping" grouping:</t>
-            <artwork><![CDATA[
+            "netconf-client-app-grouping" grouping:</t>
+
+
+            <sourcecode type="yangtree"><![CDATA[
   grouping netconf-client-app-grouping:
     +-- initiate! {ssh-initiate or tls-initiate}?
     |  +-- netconf-server* [name]
-    |     +-- name?                 string
+    |     +-- name                  string
     |     +-- endpoints
     |     |  +-- endpoint* [name]
-    |     |     +-- name?                                     string
+    |     |     +-- name                                      string
     |     |     +---u netconf-client-initiate-stack-grouping
     |     +-- connection-type
     |     |  +-- (connection-type)
@@ -414,39 +355,38 @@ HIDE_TEXT_FROM_FILE(refs/tree-netconf-client-grouping.no-expand.txt)
        +-- idle-timeout?   uint16
        +-- endpoints
           +-- endpoint* [name]
-             +-- name?                                   string
-             +---u netconf-client-listen-stack-grouping
-]]></artwork>
+             +-- name                                    string
+             +---u netconf-client-listen-stack-grouping]]></sourcecode>
             <t>Comments:</t>
             <ul>
               <li>The "netconf-client-app-grouping" defines the configuration
                   for a NETCONF client that supports both initiating connections
-                  to NETCONF servers as well as receiving call-home connections from
+                  to NETCONF servers and receiving call-home connections from
                   NETCONF servers.</li>
               <li>Both the "initiate" and "listen" subtrees are predicated by
                   "feature" statements.</li>
               <li>
-                <t>For the referenced grouping statement(s):
+                <t>For the referenced grouping statements:
                 </t>
                 <ul spacing="compact">
                   <li>The "netconf-client-initiate-stack-grouping" grouping is discussed in
-                      <xref target="netconf-client-initiate-stack-grouping"/> in this document.</li>
+                      <xref target="netconf-client-initiate-stack-grouping"/>.</li>
                   <li>The "netconf-client-listen-stack-grouping" grouping is discussed in
-                      <xref target="netconf-client-listen-stack-grouping"/> in this document.</li>
+                      <xref target="netconf-client-listen-stack-grouping"/>.</li>
                 </ul>
               </li>
             </ul>
           </section>
         </section>
         <section toc="exclude">
-          <name>Protocol-accessible Nodes</name>
+          <name>Protocol-Accessible Nodes</name>
           <t>The following tree diagram <xref target="RFC8340"/> lists all the protocol-accessible nodes
               defined in the "ietf-netconf-client" module:</t>
-          <artwork><![CDATA[
+          <sourcecode type="yangtree"><![CDATA[
 module: ietf-netconf-client
   +--rw netconf-client {central-netconf-client-supported}?
-     +---u netconf-client-app-grouping
-]]></artwork>
+     +---u netconf-client-app-grouping]]></sourcecode>
+
           <t>Comments:</t>
           <ul>
             <li>Protocol-accessible nodes are those nodes that are accessible
@@ -454,10 +394,10 @@ module: ietf-netconf-client
             <li>The top-level node "netconf-client" is additionally constrained
                 by the feature "central-netconf-client-supported".</li>
             <li>The "netconf-client-app-grouping" grouping is discussed in
-                <xref target="netconf-client-app-grouping"/> in this document.</li>
-            <li>The reason for why "netconf-client-app-grouping" exists separate from
-                the protocol-accessible nodes definition is so as to enable
-                instances of netconf-client-app-grouping to be instantiated in other
+                <xref target="netconf-client-app-grouping"/>.</li>
+            <li>The reason "netconf-client-app-grouping" exists separately from
+                the protocol-accessible nodes definition is to enable
+                instances of "netconf-client-app-grouping" to be instantiated in other
                 locations, as may be needed or desired by some modules.</li>
           </ul>
         </section>
@@ -472,7 +412,7 @@ module: ietf-netconf-client
         <t>This example is consistent with the examples presented in
           <xref section="2.2.1" target="RFC9641"/> and
             <xref section="2.2.1" target="RFC9642"/>.</t>
-        <artwork><![CDATA[
+        <sourcecode type="xml"><![CDATA[
 =============== NOTE: '\' line wrapping per RFC 8792 ================
 
 <netconf-client xmlns="urn:ietf:params:xml:ns:yang:ietf-netconf-clie\
@@ -640,16 +580,16 @@ s</central-truststore-reference>
       </endpoint>
     </endpoints>
   </listen>
-</netconf-client>
-]]></artwork>
+</netconf-client>]]></sourcecode>
+
       </section>
       <section anchor="ietf-netconf-client-module">
         <name>YANG Module</name>
         <t>This YANG module has normative references to <xref target="RFC6242"/>,
-          <xref target="RFC6991"/>, <xref target="RFC7589"/>, <xref target="RFC8071"/>,
-          <xref target="RFC9643"/>, <xref target="RFC9644"/>, and <xref target="RFC9643"/>.</t>
-        <t keepWithNext="true">&lt;CODE BEGINS&gt; file "ietf-netconf-client@2025-12-04.yang"</t>
-        <artwork><![CDATA[
+          <xref target="RFC7589"/>, <xref target="RFC8071"/>,
+        <xref target="RFC9643"/>, <xref target="RFC9644"/>, <xref target="RFC9645"/>, and  <xref target="RFC9911"/>.</t>
+
+        <sourcecode name="ietf-netconf-client@2026-06-08.yang" type="yang" markers="true"><![CDATA[
 module ietf-netconf-client {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-netconf-client";
@@ -658,47 +598,55 @@ module ietf-netconf-client {
   import ietf-yang-types {
     prefix yang;
     reference
-      "RFC 6991: Common YANG Data Types";
+      "RFC 9911: Common YANG Data Types";
   }
 
   import ietf-tcp-client {
     prefix tcpc;
     reference
-      "RFC DDDD: YANG Groupings for TCP Clients and TCP Servers";
+      "RFC 9643: YANG Groupings for TCP Clients and TCP Servers";
   }
 
   import ietf-tcp-server {
     prefix tcps;
     reference
-      "RFC DDDD: YANG Groupings for TCP Clients and TCP Servers";
+      "RFC 9643: YANG Groupings for TCP Clients and TCP Servers";
   }
 
   import ietf-ssh-client {
     prefix sshc;
     reference
-      "RFC EEEE: YANG Groupings for SSH Clients and SSH Servers";
+      "RFC 9644: YANG Groupings for SSH Clients and SSH Servers";
   }
 
   import ietf-tls-client {
     prefix tlsc;
     reference
-      "RFC FFFF: YANG Groupings for TLS Clients and TLS Servers";
+      "RFC 9645: YANG Groupings for TLS Clients and TLS Servers";
   }
 
   organization
     "IETF NETCONF (Network Configuration) Working Group";
 
   contact
-    "WG Web:   https://datatracker.ietf.org/wg/netconf
+    "WG Web:   <https://datatracker.ietf.org/wg/netconf>
      WG List:  NETCONF WG list <mailto:netconf@ietf.org>
+
      Author:   Kent Watsen <mailto:kent+ietf@watsen.net>";
 
   description
     "This module contains a collection of YANG definitions
      for configuring NETCONF clients.
 
-     Copyright (c) 2025 IETF Trust and the persons identified
-     as authors of the code. All rights reserved.
+     The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL',
+     'SHALL NOT', 'SHOULD', 'SHOULD NOT', 'RECOMMENDED',
+     'NOT RECOMMENDED', 'MAY', and 'OPTIONAL' in this document
+     are to be interpreted as described in BCP 14 (RFC 2119)
+     (RFC 8174) when, and only when, they appear in all
+     capitals, as shown here
+
+     Copyright (c) 2026 IETF Trust and the persons identified
+     as authors of the code.  All rights reserved.
 
      Redistribution and use in source and binary forms, with
      or without modification, is permitted pursuant to, and
@@ -707,22 +655,15 @@ module ietf-netconf-client {
      Legal Provisions Relating to IETF Documents
      (https://trustee.ietf.org/license-info).
 
-     This version of this YANG module is part of RFC HHHH
-     (https://www.rfc-editor.org/info/rfcHHHH); see the RFC
-     itself for full legal notices.
+     This version of this YANG module is part of RFC 10009
+     (https://www.rfc-editor.org/info/rfc10009); see the RFC
+     itself for full legal notices.";
 
-     The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL',
-     'SHALL NOT', 'SHOULD', 'SHOULD NOT', 'RECOMMENDED',
-     'NOT RECOMMENDED', 'MAY', and 'OPTIONAL' in this document
-     are to be interpreted as described in BCP 14 (RFC 2119)
-     (RFC 8174) when, and only when, they appear in all
-     capitals, as shown here.";
-
-  revision 2025-12-04 {
+  revision 2026-06-08 {
     description
       "Initial version";
     reference
-      "RFC HHHH: A YANG Data Model for NETCONF Clients and Server";
+      "RFC 10009: A YANG Data Model for NETCONF Clients and Servers";
   }
 
   // Features
@@ -732,8 +673,7 @@ module ietf-netconf-client {
       "The 'ssh-initiate' feature indicates that the NETCONF client
        supports initiating SSH connections to NETCONF servers.";
     reference
-      "RFC 6242:
-         Using the NETCONF Protocol over Secure Shell (SSH)";
+      "RFC 6242: Using the NETCONF Protocol over Secure Shell (SSH)";
   }
 
   feature tls-initiate {
@@ -771,7 +711,7 @@ module ietf-netconf-client {
 
        This feature is needed as some servers may want to use
        features defined in this module, which requires this
-       module to be implemented, without having to support
+       module to be implemented without having to support
        the top-level 'netconf-client' node.";
   }
 
@@ -784,8 +724,8 @@ module ietf-netconf-client {
        established.
 
        As no NETCONF-specific client configuration needs to be
-       set, this node is empty, but retained for clarity and for
-       consistency with other 'client-server' models.";
+       set, this node is empty; but it is retained for clarity
+       and for consistency with other 'client-server' models.";
   }
 
   grouping netconf-client-initiate-stack-grouping {
@@ -805,7 +745,7 @@ module ietf-netconf-client {
           container tcp-client-parameters {
             description
               "TCP-level client parameters to initiate
-               a NETCONF over SSH connection.";
+               a NETCONF-over-SSH connection.";
             uses tcpc:tcp-client-grouping {
               refine "remote-port" {
                 default "830";
@@ -820,13 +760,13 @@ module ietf-netconf-client {
           container ssh-client-parameters {
             description
               "SSH-level client parameters to initiate
-               a NETCONF over SSH connection.";
+               a NETCONF-over-SSH connection.";
             uses sshc:ssh-client-grouping;
           }
           container netconf-client-parameters {
             description
               "NETCONF-level client parameters to initiate
-               a NETCONF over SSH connection.";
+               a NETCONF-over-SSH connection.";
             uses ncc:netconf-client-grouping;
           }
         }
@@ -840,7 +780,7 @@ module ietf-netconf-client {
           container tcp-client-parameters {
             description
               "TCP-level client parameters to initiate
-               a NETCONF over TLS connection.";
+               a NETCONF-over-TLS connection.";
             uses tcpc:tcp-client-grouping {
               refine "remote-port" {
                 default "6513";
@@ -853,20 +793,20 @@ module ietf-netconf-client {
             }
           }
           container tls-client-parameters {
-            must client-identity {
+            must 'client-identity' {
               description
                 "NETCONF/TLS clients MUST pass some
                  authentication credentials.";
             }
             description
               "TLS-level client parameters to initiate
-               a NETCONF over TLS connection.";
+               a NETCONF-over-TLS connection.";
             uses tlsc:tls-client-grouping;
           }
           container netconf-client-parameters {
             description
               "NETCONF-level client parameters to initiate
-               a NETCONF over TLS connection.";
+               a NETCONF-over-TLS connection.";
             uses ncc:netconf-client-grouping;
           }
         }
@@ -879,7 +819,7 @@ module ietf-netconf-client {
       "A grouping for configuring a NETCONF client
        'listen' protocol stack for listening on a single port.  The
        'listen' stack supports call home connections, as
-       described in RFC 8071";
+       described in RFC 8071.";
     reference
       "RFC 8071: NETCONF Call Home and RESTCONF Call Home";
     choice transport {
@@ -891,11 +831,11 @@ module ietf-netconf-client {
         container ssh {
           description
             "TCP, SSH, and NETCONF configuration to listen
-             for NETCONF over SSH Call Home connections.";
+             for NETCONF-over-SSH Call Home connections.";
           container tcp-server-parameters {
             description
               "TCP-level server parameters to listen for
-               NETCONF over SSH Call Home connections.";
+               NETCONF-over-SSH Call Home connections.";
             uses tcps:tcp-server-grouping {
               refine "local-bind/local-port" {
                 default "4334";
@@ -909,13 +849,13 @@ module ietf-netconf-client {
           container ssh-client-parameters {
             description
               "SSH-level client parameters to listen for
-               NETCONF over SSH Call Home connections.";
+               NETCONF-over-SSH Call Home connections.";
             uses sshc:ssh-client-grouping;
           }
           container netconf-client-parameters {
             description
               "NETCONF-level client parameters to listen for
-               NETCONF over SSH Call Home connections.";
+               NETCONF-over-SSH Call Home connections.";
             uses ncc:netconf-client-grouping;
           }
         }
@@ -925,11 +865,11 @@ module ietf-netconf-client {
         container tls {
           description
             "TCP, TLS, and NETCONF configuration to listen
-             for NETCONF over TLS Call Home connections.";
+             for NETCONF-over-TLS Call Home connections.";
           container tcp-server-parameters {
             description
               "TCP-level server parameters to listen for
-               NETCONF over TLS Call Home connections.";
+               NETCONF-over-TLS Call Home connections.";
             uses tcps:tcp-server-grouping {
               refine "local-bind/local-port" {
                 default "4335";
@@ -941,20 +881,20 @@ module ietf-netconf-client {
             }
           }
           container tls-client-parameters {
-            must client-identity {
+            must 'client-identity' {
               description
                 "NETCONF/TLS clients MUST pass some
                  authentication credentials.";
             }
             description
               "TLS-level client parameters to listen for
-               NETCONF over TLS Call Home connections.";
+               NETCONF-over-TLS Call Home connections.";
             uses tlsc:tls-client-grouping;
           }
           container netconf-client-parameters {
             description
               "NETCONF-level client parameters to listen for
-               NETCONF over TLS Call Home connections.";
+               NETCONF-over-TLS Call Home connections.";
             uses ncc:netconf-client-grouping;
           }
         }
@@ -975,7 +915,7 @@ module ietf-netconf-client {
          descendant nodes do not imply that this node must be
          configured.";
       description
-        "Configures client initiating underlying TCP connections.";
+        "Configures client-initiating underlying TCP connections.";
       list netconf-server {
         key "name";
         min-elements 1;
@@ -998,7 +938,7 @@ module ietf-netconf-client {
               "A user-ordered list of endpoints that the NETCONF
                client will attempt to connect to in the specified
                sequence.  Defining more than one enables
-               high-availability.";
+               high availability.";
             leaf name {
               type string;
               description
@@ -1024,7 +964,7 @@ module ietf-netconf-client {
                 description
                   "Maintain a persistent connection to the NETCONF
                    server.  If the connection goes down, immediately
-                   start trying to reconnect to the NETCONF server,
+                   start trying to reconnect to the NETCONF server
                    using the reconnection strategy.
 
                    This connection type minimizes any NETCONF server
@@ -1041,14 +981,14 @@ module ietf-netconf-client {
 
                    This connection type decreases resource
                    utilization, albeit with increased delay in
-                   NETCONF server to NETCONF client interactions.
+                   NETCONF-server-to-NETCONF-client interactions.
 
                    The NETCONF client SHOULD close the underlying
                    TCP connection upon completing planned activities.
 
                    Connections are established at the same start
-                   time regardless how long the previous connection
-                   stayed open.
+                   time regardless of how long the previous 
+                   connection stayed open.
 
                    In the case that the previous connection is still
                    active, establishing a new connection is NOT
@@ -1070,26 +1010,26 @@ module ietf-netconf-client {
                   }
                   description
                     "Designates a timestamp before or after which a
-                     series of periodic connections are determined.
+                     series of periodic connections is determined.
                      The periodic connections occur at a whole
                      multiple interval from the anchor time.
 
                      If an 'anchor-time' is not provided, then the
                      server may implicitly set it to the time when
-                     this configuraton is applied (e.g., on boot).
+                     this configuration is applied (e.g., on boot).
 
-                     For example, for an anchor time is 15 minutes
+                     For example, for an anchor time of 15 minutes
                      past midnight and a period interval of 24 hours,
-                     then a periodic connection will occur 15 minutes
-                     past midnight everyday.";
+                     a periodic connection will occur 15 minutes
+                     past midnight every day.";
                 }
                 leaf idle-timeout {
                   type uint16;
                   units "seconds";
-                  default 180; // three minutes
+                  default "180"; // three minutes
                   description
                     "Specifies the maximum number of seconds that
-                     a NETCONF session may remain idle. A NETCONF
+                     a NETCONF session may remain idle.  A NETCONF
                      session will be dropped if it is idle for an
                      interval longer then this number of seconds.
                      If set to zero, then the NETCONF client will
@@ -1102,7 +1042,7 @@ module ietf-netconf-client {
         container reconnect-strategy {
           description
             "The reconnection strategy directs how a NETCONF client
-             reconnects to a NETCONF server, after discovering its
+             reconnects to a NETCONF server after discovering its
              connection to the server has dropped, even if due to a
              reboot.  The NETCONF client starts with the specified
              endpoint and tries to connect to it max-attempts times
@@ -1151,9 +1091,9 @@ module ietf-netconf-client {
             }
             default "3";
             description
-              "Specifies the number times the NETCONF client tries
-               to connect to a specific endpoint before moving on
-               to the next endpoint in the list (round robin).";
+              "Specifies the number of times the NETCONF client 
+               tries to connect to a specific endpoint before moving
+               on to the next endpoint in the list (round robin).";
           }
         }
       } // netconf-server
@@ -1173,7 +1113,7 @@ module ietf-netconf-client {
         default "180"; // three minutes
         description
           "Specifies the maximum number of seconds that a NETCONF
-           session may remain idle. A NETCONF session will be
+           session may remain idle.  A NETCONF session will be
            dropped if it is idle for an interval longer than this
            number of seconds.  If set to zero, then the server
            will never drop a session because it is idle.";
@@ -1199,40 +1139,38 @@ module ietf-netconf-client {
 
   // Protocol accessible node for clients that implement this module.
   container netconf-client {
-    if-feature central-netconf-client-supported;
+    if-feature "central-netconf-client-supported";
     uses netconf-client-app-grouping;
     description
-      "Top-level container for NETCONF client configuration.";
+      "Top-level container for NETCONF-client configuration.";
   }
-}
-]]></artwork>
-        <t keepWithPrevious="true">&lt;CODE ENDS&gt;</t>
+}]]></sourcecode>
+
       </section>
     </section>
     <section anchor="netconf-server-model">
-      <name>The "ietf-netconf-server" Module</name>
-      <t>The NETCONF server data model presented in this section supports
-        both listening for connections as well as initiating call-home
-        connections, using either the SSH and TLS transport protocols.</t>
+      <name>The "ietf-netconf-server" YANG Module</name>
+      <t>The NETCONF server YANG data model presented in this section supports
+        both listening for connections and initiating call-home
+        connections, using either the SSH or TLS transport protocol.</t>
       <t>YANG feature statements are used to enable implementations to
         advertise which potentially uncommon parts of the data model the
         NETCONF server supports.</t>
       <section anchor="netconf-server-tree">
         <name>Data Model Overview</name>
         <t>This section provides an overview of the "ietf-netconf-server"
-            module in terms of its features and groupings.</t>
+            YANG module in terms of its features and groupings.</t>
         <section anchor="server-features" toc="exclude">
           <name>Features</name>
           <t>The following diagram lists all the "feature" statements
-              defined in the "ietf-netconf-server" module:</t>
-          <artwork><![CDATA[
+          defined in the "ietf-netconf-server" module:</t>	  
+          <sourcecode type="yangtree"><![CDATA[
 Features:
   +-- ssh-listen
   +-- tls-listen
   +-- ssh-call-home
   +-- tls-call-home
-  +-- central-netconf-server-supported
-                  ]]></artwork>
+  +-- central-netconf-server-supported]]></sourcecode>
           <!--<aside>-->
               <t>The diagram above uses syntax that is similar to but not
                 defined in <xref target="RFC8340"/>.</t>
@@ -1252,22 +1190,22 @@ Features:
             <name>The "netconf-server-grouping" Grouping</name>
             <t>The following tree diagram <xref target="RFC8340"/> illustrates the
                 "netconf-server-grouping" grouping:</t>
-            <artwork><![CDATA[
+            <sourcecode type="yangtree"><![CDATA[
   grouping netconf-server-grouping:
     +-- client-identity-mappings
-       +---u x509c2n:cert-to-name
-]]></artwork>
+       +---u x509c2n:cert-to-name]]></sourcecode>
+
             <t>Comments:</t>
             <ul>
               <li>The "netconf-server-grouping" defines the configuration for the
                   "NETCONF" part of a protocol stack.  It does not, for instance,
                   define any configuration for the "TCP", "SSH" or "TLS" protocol layers
-                  (for that, see <xref target="netconf-server-listen-stack-grouping"/>
-                  and <xref target="netconf-server-callhome-stack-grouping"/>).</li>
+                  (for that, see Sections <xref target="netconf-server-listen-stack-grouping" format="counter"/>
+                  and <xref target="netconf-server-callhome-stack-grouping" format="counter"/>).</li>
               <li>The "client-identity-mappings" node defines a mapping
                   from certificate fields to NETCONF user names.</li>
               <li>
-                <t>For the referenced grouping statement(s):
+                <t>For the referenced grouping statement:
                 </t>
                 <ul spacing="compact">
                   <li>The "cert-to-name" grouping is discussed in
@@ -1280,7 +1218,7 @@ Features:
             <name>The "netconf-server-listen-stack-grouping" Grouping</name>
             <t>The following tree diagram <xref target="RFC8340"/> illustrates the
                 "netconf-server-listen-stack-grouping" grouping:</t>
-            <artwork><![CDATA[
+            <sourcecode type="yangtree"><![CDATA[
   grouping netconf-server-listen-stack-grouping:
     +-- (transport)
        +--:(ssh) {ssh-listen}?
@@ -1298,19 +1236,19 @@ Features:
              +-- tls-server-parameters
              |  +---u tlss:tls-server-grouping
              +-- netconf-server-parameters
-                +---u ncs:netconf-server-grouping
-]]></artwork>
+                +---u ncs:netconf-server-grouping]]></sourcecode>
+
             <t>Comments:</t>
             <ul>
               <li>The "netconf-server-listen-stack-grouping" defines the
                   configuration for a full NETCONF protocol stack for NETCONF
-                  servers that listen for connections from NETCONF clients,
-                  as opposed to initiating call-home <xref target="RFC8071"/> connections.</li>
+                  servers that listen for connections from NETCONF clients
+                  (as opposed to initiating call-home connections).</li>
               <li>The "transport" choice node enables either the SSH or
-                  TLS transports to be configured, with each option
+                  TLS transport to be configured, with each option
                   enabled by a "feature" statement.</li>
               <li>
-                <t>For the referenced grouping statement(s):
+                <t>For the referenced grouping statements:
                 </t>
                 <ul spacing="compact">
                   <li>The "tcp-server-grouping" grouping is discussed in
@@ -1319,8 +1257,7 @@ Features:
                       <xref section="4.1.2.1" target="RFC9644"/>.</li>
                   <li>The "tls-server-grouping" grouping is discussed in
                       <xref section="4.1.2.1" target="RFC9645"/>.</li>
-                  <li>The "netconf-server-grouping" is discussed in <xref target="netconf-server-grouping"/>
-                      of this document.</li>
+                  <li>The "netconf-server-grouping" is discussed in <xref target="netconf-server-grouping"/></li>
                 </ul>
               </li>
             </ul>
@@ -1329,7 +1266,7 @@ Features:
             <name>The "netconf-server-callhome-stack-grouping" Grouping</name>
             <t>The following tree diagram <xref target="RFC8340"/> illustrates the
                 "netconf-server-callhome-stack-grouping" grouping:</t>
-            <artwork><![CDATA[
+            <sourcecode type="yangtree"><![CDATA[
   grouping netconf-server-callhome-stack-grouping:
     +-- (transport)
        +--:(ssh) {ssh-call-home}?
@@ -1347,19 +1284,19 @@ Features:
              +-- tls-server-parameters
              |  +---u tlss:tls-server-grouping
              +-- netconf-server-parameters
-                +---u ncs:netconf-server-grouping
-]]></artwork>
+                +---u ncs:netconf-server-grouping]]></sourcecode>
+
             <t>Comments:</t>
             <ul>
               <li>The "netconf-server-callhome-stack-grouping" defines the
-                  configuration for a full NETCONF protocol stack, for NETCONF
-                  servers that initiate call-home <xref target="RFC8071"/> connections
+                  configuration for a full NETCONF protocol stack for NETCONF
+                  servers that initiate call-home connections
                   to NETCONF clients.</li>
               <li>The "transport" choice node enables either the SSH or
-                  TLS transports to be configured, with each option
+                  TLS transport to be configured, with each option
                   enabled by a "feature" statement.</li>
               <li>
-                <t>For the referenced grouping statement(s):
+                <t>For the referenced grouping statements:
                 </t>
                 <ul spacing="compact">
                   <li>The "tcp-client-grouping" grouping is discussed in
@@ -1378,20 +1315,21 @@ Features:
             <name>The "netconf-server-app-grouping" Grouping</name>
             <t>The following tree diagram <xref target="RFC8340"/> illustrates the
                 "netconf-server-app-grouping" grouping:</t>
-            <artwork><![CDATA[
+
+            <sourcecode type="yangtree"><![CDATA[
   grouping netconf-server-app-grouping:
     +-- listen! {ssh-listen or tls-listen}?
     |  +-- idle-timeout?   uint16
     |  +-- endpoints
     |     +-- endpoint* [name]
-    |        +-- name?                                   string
+    |        +-- name                                    string
     |        +---u netconf-server-listen-stack-grouping
     +-- call-home! {ssh-call-home or tls-call-home}?
        +-- netconf-client* [name]
-          +-- name?                 string
+          +-- name                  string
           +-- endpoints
           |  +-- endpoint* [name]
-          |     +-- name?                                     string
+          |     +-- name                                      string
           |     +---u netconf-server-callhome-stack-grouping
           +-- connection-type
           |  +-- (connection-type)
@@ -1405,24 +1343,24 @@ Features:
           +-- reconnect-strategy
              +-- start-with?     enumeration
              +-- max-wait?       uint16
-             +-- max-attempts?   uint8
-]]></artwork>
+             +-- max-attempts?   uint8]]></sourcecode>
+
             <t>Comments:</t>
             <ul>
               <li>The "netconf-server-app-grouping" defines the configuration
                   for a NETCONF server that supports both listening for connections
-                  from NETCONF clients as well as initiating call-home connections to
+                  from NETCONF clients and initiating call-home connections to
                   NETCONF clients.</li>
               <li>Both the "listen" and "call-home" subtrees must be enabled by
                   "feature" statements.</li>
               <li>
-                <t>For the referenced grouping statement(s):
+                <t>For the referenced grouping statements:
                 </t>
                 <ul spacing="compact">
                   <li>The "netconf-server-listen-stack-grouping" grouping is discussed in
-                      <xref target="netconf-server-listen-stack-grouping"/> in this document.</li>
+                      <xref target="netconf-server-listen-stack-grouping"/>.</li>
                   <li>The "netconf-server-callhome-stack-grouping" grouping is discussed in
-                      <xref target="netconf-server-callhome-stack-grouping"/> in this document.</li>
+                      <xref target="netconf-server-callhome-stack-grouping"/>.</li>
                 </ul>
               </li>
             </ul>
@@ -1432,11 +1370,12 @@ Features:
           <name>Protocol-accessible Nodes</name>
           <t>The following tree diagram <xref target="RFC8340"/> lists all the protocol-accessible nodes
               defined in the "ietf-netconf-server" module:</t>
-          <artwork><![CDATA[
+
+          <sourcecode type="yangtree"><![CDATA[
 module: ietf-netconf-server
   +--rw netconf-server {central-netconf-server-supported}?
-     +---u netconf-server-app-grouping
-]]></artwork>
+     +---u netconf-server-app-grouping]]></sourcecode>
+
           <t>Comments:</t>
           <ul>
             <li>Protocol-accessible nodes are those nodes that are accessible
@@ -1444,10 +1383,10 @@ module: ietf-netconf-server
             <li>The top-level node "netconf-server" is additionally constrained
                 by the feature "central-netconf-server-supported".</li>
             <li>The "netconf-server-app-grouping" grouping is discussed in
-                <xref target="netconf-server-app-grouping"/> in this document.</li>
-            <li>The reason for why "netconf-server-app-grouping" exists separate from
-                the protocol-accessible nodes definition is so as to enable
-                instances of netconf-server-app-grouping to be instantiated in other
+                <xref target="netconf-server-app-grouping"/>.</li>
+            <li>The reason "netconf-server-app-grouping" exists separately from
+                the protocol-accessible nodes definition is to enable
+                instances of "netconf-server-app-grouping" to be instantiated in other
                 locations, as may be needed or desired by some modules.</li>
           </ul>
         </section>
@@ -1456,12 +1395,12 @@ module: ietf-netconf-server
         <name>Example Usage</name>
         <t>The following example illustrates configuring a NETCONF server
           to listen for NETCONF client connections using both the SSH and
-          TLS transport protocols, as well as configuring call-home to two
+          TLS transport protocols as well as configuring call-home to two
           NETCONF clients, one using SSH and the other using TLS.</t>
         <t>This example is consistent with the examples presented in
             <xref section="2.2.1" target="RFC9641"/> and
             <xref section="2.2.1" target="RFC9642"/>.</t>
-        <artwork><![CDATA[
+        <sourcecode type="xml"><![CDATA[
 =============== NOTE: '\' line wrapping per RFC 8792 ================
 
 <netconf-server
@@ -1740,17 +1679,17 @@ rts</central-truststore-reference>
       </reconnect-strategy>
     </netconf-client>
   </call-home>
-</netconf-server>
-]]></artwork>
+</netconf-server>]]></sourcecode>
+
       </section>
       <section anchor="ietf-netconf-server-module">
         <name>YANG Module</name>
         <t>This YANG module has normative references to <xref target="RFC6242"/>,
-          <xref target="RFC6991"/>, <xref target="RFC7407"/>, <xref target="RFC7589"/>,
+          <xref target="RFC7407"/>, <xref target="RFC7589"/>,
           <xref target="RFC8071"/>, <xref target="RFC9643"/>, <xref target="RFC9644"/>,
-          and <xref target="RFC9645"/>.</t>
-        <t keepWithNext="true">&lt;CODE BEGINS&gt; file "ietf-netconf-server@2025-12-04.yang"</t>
-        <artwork><![CDATA[
+        <xref target="RFC9645"/>, and  <xref target="RFC9911"/>.</t>
+
+        <sourcecode name="ietf-netconf-server@2026-06-08.yang" type="yang" markers="true"><![CDATA[
 module ietf-netconf-server {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-netconf-server";
@@ -1759,7 +1698,7 @@ module ietf-netconf-server {
   import ietf-yang-types {
     prefix yang;
     reference
-      "RFC 6991: Common YANG Data Types";
+      "RFC 9911: Common YANG Data Types";
   }
 
   import ietf-x509-cert-to-name {
@@ -1771,47 +1710,55 @@ module ietf-netconf-server {
   import ietf-tcp-client {
     prefix tcpc;
     reference
-      "RFC DDDD: YANG Groupings for TCP Clients and TCP Servers";
+      "RFC 9643: YANG Groupings for TCP Clients and TCP Servers";
   }
 
   import ietf-tcp-server {
     prefix tcps;
     reference
-      "RFC DDDD: YANG Groupings for TCP Clients and TCP Servers";
+      "RFC 9643: YANG Groupings for TCP Clients and TCP Servers";
   }
 
   import ietf-ssh-common {
     prefix sshcmn;
     reference
-      "RFC EEEE: YANG Groupings for SSH Clients and SSH Servers";
+      "RFC 9644: YANG Groupings for SSH Clients and SSH Servers";
   }
 
   import ietf-ssh-server {
     prefix sshs;
     reference
-      "RFC EEEE: YANG Groupings for SSH Clients and SSH Servers";
+      "RFC 9644: YANG Groupings for SSH Clients and SSH Servers";
   }
 
   import ietf-tls-server {
     prefix tlss;
     reference
-      "RFC FFFF: YANG Groupings for TLS Clients and TLS Servers";
+      "RFC 9645: YANG Groupings for TLS Clients and TLS Servers";
   }
 
   organization
     "IETF NETCONF (Network Configuration) Working Group";
 
   contact
-    "WG Web:   https://datatracker.ietf.org/wg/netconf
+    "WG Web:   <https://datatracker.ietf.org/wg/netconf>
      WG List:  NETCONF WG list <mailto:netconf@ietf.org>
+
      Author:   Kent Watsen <mailto:kent+ietf@watsen.net>";
 
   description
     "This module contains a collection of YANG definitions
      for configuring NETCONF servers.
 
-     Copyright (c) 2025 IETF Trust and the persons identified
-     as authors of the code. All rights reserved.
+     The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL',
+     'SHALL NOT', 'SHOULD', 'SHOULD NOT', 'RECOMMENDED',
+     'NOT RECOMMENDED', 'MAY', and 'OPTIONAL' in this document
+     are to be interpreted as described in BCP 14 (RFC 2119)
+     (RFC 8174) when, and only when, they appear in all
+     capitals, as shown here.
+
+     Copyright (c) 2026 IETF Trust and the persons identified
+     as authors of the code.  All rights reserved.
 
      Redistribution and use in source and binary forms, with
      or without modification, is permitted pursuant to, and
@@ -1820,22 +1767,15 @@ module ietf-netconf-server {
      Legal Provisions Relating to IETF Documents
      (https://trustee.ietf.org/license-info).
 
-     This version of this YANG module is part of RFC HHHH
-     (https://www.rfc-editor.org/info/rfcHHHH); see the RFC
-     itself for full legal notices.
+     This version of this YANG module is part of RFC 10009
+     (https://www.rfc-editor.org/info/rfc10009); see the RFC
+     itself for full legal notices.";
 
-     The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL',
-     'SHALL NOT', 'SHOULD', 'SHOULD NOT', 'RECOMMENDED',
-     'NOT RECOMMENDED', 'MAY', and 'OPTIONAL' in this document
-     are to be interpreted as described in BCP 14 (RFC 2119)
-     (RFC 8174) when, and only when, they appear in all
-     capitals, as shown here.";
-
-  revision 2025-12-04 {
+  revision 2026-06-08 {
     description
       "Initial version";
     reference
-      "RFC HHHH: A YANG Data Model for NETCONF Clients and Server";
+      "RFC 10009: A YANG Data Model for NETCONF Clients and Servers";
   }
 
   // Features
@@ -1843,17 +1783,16 @@ module ietf-netconf-server {
   feature ssh-listen {
     description
       "The 'ssh-listen' feature indicates that the NETCONF server
-       supports opening a port to accept NETCONF over SSH
+       supports opening a port to accept NETCONF-over-SSH
        client connections.";
     reference
-      "RFC 6242:
-         Using the NETCONF Protocol over Secure Shell (SSH)";
+      "RFC 6242: Using the NETCONF Protocol over Secure Shell (SSH)";
   }
 
   feature tls-listen {
     description
       "The 'tls-listen' feature indicates that the NETCONF server
-       supports opening a port to accept NETCONF over TLS
+       supports opening a port to accept NETCONF-over-TLS
        client connections.";
     reference
       "RFC 7589: Using the NETCONF Protocol over Transport
@@ -1864,7 +1803,7 @@ module ietf-netconf-server {
   feature ssh-call-home {
     description
       "The 'ssh-call-home' feature indicates that the NETCONF
-       server supports initiating a NETCONF over SSH call
+       server supports initiating a NETCONF-over-SSH call
        home connection to NETCONF clients.";
     reference
       "RFC 8071: NETCONF Call Home and RESTCONF Call Home";
@@ -1873,7 +1812,7 @@ module ietf-netconf-server {
   feature tls-call-home {
     description
       "The 'tls-call-home' feature indicates that the NETCONF
-       server supports initiating a NETCONF over TLS call
+       server supports initiating a NETCONF-over-TLS call
        home connection to NETCONF clients.";
     reference
       "RFC 8071: NETCONF Call Home and RESTCONF Call Home";
@@ -1887,7 +1826,7 @@ module ietf-netconf-server {
 
        This feature is needed as some servers may want to use
        features defined in this module, which requires this
-       module to be implemented, without having to support
+       module to be implemented without having to support
        the top-level 'netconf-server' node.";
   }
 
@@ -1916,7 +1855,7 @@ module ietf-netconf-server {
 
          For TLS-based transports, if no matching and valid
          cert-to-name list entry can be found, then the NETCONF
-         server MUST close the connection, and MUST NOT accept
+         server MUST close the connection and MUST NOT accept
          NETCONF messages over it, per Section 7 in RFC 7589.
 
          For SSH-based transports, a matching cert-to-name
@@ -1924,11 +1863,10 @@ module ietf-netconf-server {
          implementation, consistent with the second paragraph
          of Section 3 in RFC 6242.";
       reference
-        "RFC 6242:
-           Using the NETCONF Protocol over Secure Shell (SSH)
-         RFC 7589:
-           Using the NETCONF Protocol over Transport Layer
-           Security (TLS) with Mutual X.509 Authentication";
+        "RFC 6242: Using the NETCONF Protocol over Secure Shell (SSH)
+         RFC 7589: Using the NETCONF Protocol over Transport 
+                   Layer Security (TLS) with Mutual X.509 
+                   Authentication";
       uses x509c2n:cert-to-name {
         refine "cert-to-name/fingerprint" {
           mandatory false;
@@ -1936,9 +1874,10 @@ module ietf-netconf-server {
             "A 'fingerprint' value does not need to be specified
              when the 'cert-to-name' mapping is independent of
              fingerprint matching.  A 'cert-to-name' having no
-             fingerprint value will match any client certificate
-             and therefore SHOULD only be present at the end of
-             the user-ordered 'cert-to-name' list.";
+             fingerprint value will match any client 
+             certificate; therefore, it SHOULD only be present 
+             at the end of the user-ordered 'cert-to-name'
+             list.";
         }
       }
     }
@@ -1957,11 +1896,11 @@ module ietf-netconf-server {
         container ssh {
           description
             "TCP, SSH, and NETCONF configuration to listen
-             for NETCONF over SSH connections.";
+             for NETCONF-over-SSH connections.";
           container tcp-server-parameters {
             description
               "TCP-level server parameters to listen
-               for NETCONF over SSH connections.";
+               for NETCONF-over-SSH connections.";
             uses tcps:tcp-server-grouping {
               refine "local-bind/local-port" {
                 default "830";
@@ -1976,13 +1915,13 @@ module ietf-netconf-server {
           container ssh-server-parameters {
             description
               "SSH-level server parameters to listen
-               for NETCONF over SSH connections.";
+               for NETCONF-over-SSH connections.";
             uses sshs:ssh-server-grouping;
           }
           container netconf-server-parameters {
             description
               "NETCONF-level server parameters to listen
-               for NETCONF over SSH connections.";
+               for NETCONF-over-SSH connections.";
             uses ncs:netconf-server-grouping {
               refine "client-identity-mappings" {
                 if-feature "sshcmn:ssh-x509-certs";
@@ -2013,11 +1952,11 @@ module ietf-netconf-server {
         container tls {
           description
             "TCP, TLS, and NETCONF configuration to listen
-             for NETCONF over TLS connections.";
+             for NETCONF-over-TLS connections.";
           container tcp-server-parameters {
             description
               "TCP-level server parameters to listen
-               for NETCONF over TLS connections.";
+               for NETCONF-over-TLS connections.";
             uses tcps:tcp-server-grouping {
               refine "local-bind/local-port" {
                 default "6513";
@@ -2032,27 +1971,27 @@ module ietf-netconf-server {
           container tls-server-parameters {
             description
               "TLS-level server parameters to listen
-               for NETCONF over TLS connections.";
+               for NETCONF-over-TLS connections.";
             uses tlss:tls-server-grouping {
               refine "client-authentication" {
                 must 'ca-certs or ee-certs';
                 description
                   "NETCONF/TLS servers MUST validate client
                    certificates.  This configures certificates
-                   at the socket-level (i.e. bags).  More
+                   at the socket level (i.e., bags).  More-
                    discriminating client-certificate checks
                    SHOULD be implemented by the application.";
                 reference
-                  "RFC 7589:
-                    Using the NETCONF Protocol over Transport Layer
-                    Security (TLS) with Mutual X.509 Authentication";
+                  "RFC 7589: Using the NETCONF Protocol over 
+                             Transport Layer Security (TLS) 
+                             with Mutual X.509 Authentication";
               }
             }
           }
           container netconf-server-parameters {
             description
               "NETCONF-level server parameters to listen
-               for NETCONF over TLS connections.";
+               for NETCONF-over-TLS connections.";
             uses ncs:netconf-server-grouping {
               refine "client-identity-mappings/cert-to-name" {
                 min-elements 1;
@@ -2069,7 +2008,7 @@ module ietf-netconf-server {
   grouping netconf-server-callhome-stack-grouping {
     description
       "A grouping for configuring a NETCONF server
-       'call-home' protocol stack, for a single outbound
+       'call-home' protocol stack for a single outbound
        connection.";
     choice transport {
       mandatory true;
@@ -2080,11 +2019,11 @@ module ietf-netconf-server {
         container ssh {
           description
             "TCP, SSH, and NETCONF configuration to initiate
-             a NETCONF over SSH Call Home connection.";
+             a NETCONF-over-SSH Call Home connection.";
           container tcp-client-parameters {
             description
               "TCP-level client parameters to initiate a
-               NETCONF over SSH Call Home connection.";
+               NETCONF-over-SSH Call Home connection.";
             uses tcpc:tcp-client-grouping {
               refine "remote-port" {
                 default "4334";
@@ -2099,13 +2038,13 @@ module ietf-netconf-server {
           container ssh-server-parameters {
             description
               "SSH-level server parameters to initiate a
-               NETCONF over SSH Call Home connection.";
+               NETCONF-over-SSH Call Home connection.";
             uses sshs:ssh-server-grouping;
           }
           container netconf-server-parameters {
             description
               "NETCONF-level server parameters to initiate a
-               NETCONF over SSH Call Home connection.";
+               NETCONF-over-SSH Call Home connection.";
             uses ncs:netconf-server-grouping {
               refine "client-identity-mappings" {
                 if-feature "sshcmn:ssh-x509-certs";
@@ -2136,11 +2075,11 @@ module ietf-netconf-server {
         container tls {
           description
             "TCP, TLS, and NETCONF configuration to initiate
-             a NETCONF over TLS Call Home connection.";
+             a NETCONF-over-TLS Call Home connection.";
           container tcp-client-parameters {
             description
               "TCP-level client parameters to initiate a
-               NETCONF over TLS Call Home connection.";
+               NETCONF-over-TLS Call Home connection.";
             uses tcpc:tcp-client-grouping {
               refine "remote-port" {
                 default "4335";
@@ -2155,27 +2094,27 @@ module ietf-netconf-server {
           container tls-server-parameters {
             description
               "TLS-level server parameters to initiate a
-               NETCONF over TLS Call Home connection.";
+               NETCONF-over-TLS Call Home connection.";
             uses tlss:tls-server-grouping {
               refine "client-authentication" {
                 must 'ca-certs or ee-certs';
                 description
                   "NETCONF/TLS servers MUST validate client
                    certificates.  This configures certificates
-                   at the socket-level (i.e. bags).  More
+                   at the socket level (i.e., bags).  More-
                    discriminating client-certificate checks
                    SHOULD be implemented by the application.";
                 reference
-                  "RFC 7589:
-                    Using the NETCONF Protocol over Transport Layer
-                    Security (TLS) with Mutual X.509 Authentication";
+                  "RFC 7589: Using the NETCONF Protocol over 
+                             Transport Layer Security (TLS) 
+                             with Mutual X.509 Authentication";
               }
             }
           }
           container netconf-server-parameters {
             description
               "NETCONF-level server parameters to initiate a
-               NETCONF over TLS Call Home connection.";
+               NETCONF-over-TLS Call Home connection.";
             uses ncs:netconf-server-grouping {
               refine "client-identity-mappings/cert-to-name" {
                 min-elements 1;
@@ -2201,14 +2140,14 @@ module ietf-netconf-server {
          This statement is present so the mandatory descendant
          nodes do not imply that this node must be configured.";
       description
-        "Configures listen behavior";
+        "Configures listen behavior.";
       leaf idle-timeout {
         type uint16;
         units "seconds";
         default "180"; // three minutes
         description
           "Specifies the maximum number of seconds that a NETCONF
-           session may remain idle. A NETCONF session will be
+           session may remain idle.  A NETCONF session will be
            dropped if it is idle for an interval longer than this
            number of seconds.  If set to zero, then the server
            will never drop a session because it is idle.";
@@ -2261,7 +2200,7 @@ module ietf-netconf-server {
             description
               "A non-empty user-ordered list of endpoints for this
                NETCONF server to try to connect to in sequence.
-               Defining more than one enables high-availability.";
+               Defining more than one enables high availability.";
             leaf name {
               type string;
               description
@@ -2285,12 +2224,12 @@ module ietf-netconf-server {
                    maintained.";
                 description
                   "Maintain a persistent connection to the NETCONF
-                   client. If the connection goes down, immediately
-                   start trying to reconnect to the NETCONF client,
+                   client.  If the connection goes down, immediately
+                   start trying to reconnect to the NETCONF client
                    using the reconnection strategy.
 
-                   This connection type minimizes any NETCONF client
-                   to NETCONF server data-transfer delay, albeit at
+                   This connection type minimizes any NETCONF-client-
+                   to-NETCONF server data-transfer delay, albeit at
                    the expense of holding resources longer.";
               }
             }
@@ -2303,7 +2242,7 @@ module ietf-netconf-server {
 
                    This connection type decreases resource
                    utilization, albeit with increased delay in
-                   NETCONF client to NETCONF server interactions.
+                   NETCONF-client-to-NETCONF-server interactions.
 
                    The NETCONF client SHOULD gracefully close the
                    connection using <close-session> upon completing
@@ -2312,8 +2251,8 @@ module ietf-netconf-server {
                    immediately attempt to reestablish the connection.
 
                    Connections are established at the same start
-                   time regardless how long the previous connection
-                   stayed open.
+                   time regardless of how long the previous
+                   connection stayed open.
 
                    In the case that the previous connection is still
                    active (i.e., the NETCONF client has not closed
@@ -2336,18 +2275,18 @@ module ietf-netconf-server {
                   }
                   description
                     "Designates a timestamp before or after which a
-                     series of periodic connections are determined.
+                     series of periodic connections is determined.
                      The periodic connections occur at a whole
                      multiple interval from the anchor time.
 
                      If an 'anchor-time' is not provided, then the
                      server may implicitly set it to the time when
-                     this configuraton is applied (e.g., on boot).
+                     this configuration is applied (e.g., on boot).
 
-                     For example, for an anchor time is 15 minutes
+                     For example, for an anchor time of 15 minutes
                      past midnight and a period interval of 24 hours,
-                     then a periodic connection will occur 15 minutes
-                     past midnight everyday.";
+                     a periodic connection will occur 15 minutes
+                     past midnight every day.";
                 }
                 leaf idle-timeout {
                   type uint16;
@@ -2355,7 +2294,7 @@ module ietf-netconf-server {
                   default "180"; // three minutes
                   description
                     "Specifies the maximum number of seconds that
-                     a NETCONF session may remain idle. A NETCONF
+                     a NETCONF session may remain idle.  A NETCONF
                      session will be dropped if it is idle for an
                      interval longer than this number of seconds.
                      If set to zero, then the server will never
@@ -2368,7 +2307,7 @@ module ietf-netconf-server {
         container reconnect-strategy {
           description
             "The reconnection strategy directs how a NETCONF server
-             reconnects to a NETCONF client, after discovering its
+             reconnects to a NETCONF client after discovering its
              connection to the client has dropped, even if due to a
              reboot.  The NETCONF server starts with the specified
              endpoint and tries to connect to it max-attempts times
@@ -2417,7 +2356,7 @@ module ietf-netconf-server {
             }
             default "3";
             description
-              "Specifies the number times the NETCONF server tries
+              "Specifies the number of times the NETCONF server tries
                to connect to a specific endpoint before moving on
                to the next endpoint in the list (round robin).";
           }
@@ -2428,130 +2367,146 @@ module ietf-netconf-server {
 
   // Protocol accessible node for servers that implement this module.
   container netconf-server {
-    if-feature central-netconf-server-supported;
+    if-feature "central-netconf-server-supported";
     uses netconf-server-app-grouping;
     description
       "Top-level container for NETCONF server configuration.";
   }
-}
-]]></artwork>
-        <t keepWithPrevious="true">&lt;CODE ENDS&gt;</t>
+}]]></sourcecode>
+
       </section>
     </section>
     <section>
-      <name>Security Considerations</name>
+      <name>Security Considerations</name> 
+
+
       <section>
         <name>Considerations for the "ietf-netconf-client" YANG Module</name>
-        <t>This section is modeled after the template defined in <xref section="3.7.1" target="RFC8407"/>.</t>
-        <t>The "ietf-netconf-client" YANG module defines data nodes
-            that are designed to be accessed via YANG-based management
-            protocols, such as NETCONF <xref target="RFC6241"/> and RESTCONF
-            <xref target="RFC8040"/>.  The YANG-based management protocols
-            have to use a secure transport layer such as SSH <xref target="RFC4252"/>,
-            TLS <xref target="RFC8446"/>, or QUIC <xref target="RFC9000"/>.
-            The YANG-based management protocols also have to use mutual
+        <t>This section is modeled after the template described in <xref section="3.7.1" target="RFC9907"/>.</t>
+        <t>The "ietf-netconf-client" YANG module defines a data model
+            that is designed to be accessed via YANG-based management
+            protocols, such as the Network Configuration Protocol (NETCONF) <xref target="RFC6241"/> and RESTCONF
+            <xref target="RFC8040"/>.  These YANG-based management protocols
+            (1) have to use a secure transport layer (e.g., Secure Shell (SSH) <xref target="RFC4252"/>,
+            TLS <xref target="RFC8446"/>, and QUIC <xref target="RFC9000"/>) and (2) have to use mutual
             authentication.</t>
-        <t>The Network Access Control Model (NACM) <xref target="RFC8341"/>
-            provides the means to restrict access for particular users to a
-            pre-configured subset of all available protocol operations and
-            content.</t>
+        <t>The Network Configuration Access Control Model (NACM) <xref target="RFC8341"/>
+            provides the means to restrict access for particular NETCONF or RESTCONF users to a
+            preconfigured subset of all available NETCONF or RESTCONF protocol operations and
+        content.</t>
+	        <t>None of the writable data nodes defined in this YANG module are
+            considered sensitive or vulnerable in network environments.
+            The NACM "default-deny-write" extension has not been set for
+		any data nodes defined in this module.</t>
+
+        <t>None of the readable data nodes defined in this YANG module are
+            considered sensitive or vulnerable in network environments.
+            The NACM "default-deny-all" extension has not been set for
+        any data nodes defined in this module.</t>
+
+	<t>This YANG module does not define any RPCs, actions, or notifications; thus, the
+			security consideration for such is not provided here.</t>
+	
         <t>This YANG module uses groupings from
             other YANG modules that define nodes that may be considered
-            sensitive or vulnerable in network environments.  Please
-            review the Security Considerations for dependent YANG modules
+            sensitive or vulnerable in network environments.  Refer
+            to the Security Considerations of <xref target="RFC9643" format="default"/>, <xref target="RFC9644" format="default"/>, and <xref target="RFC9645" format="default"/>
             for information as to which nodes may be considered sensitive
             or vulnerable in network environments.</t>
         <t>This YANG module uses groupings defined in
             other RFCs that define data nodes that do set the NACM "default-deny-all"
             and "default-deny-write" extensions.</t>
-        <t>None of the readable data nodes defined in this YANG module are
-            considered sensitive or vulnerable in network environments.
-            The NACM "default-deny-all" extension has not been set for
-            any data nodes defined in this module.</t>
-        <t>None of the writable data nodes defined in this YANG module are
-            considered sensitive or vulnerable in network environments.
-            The NACM "default-deny-write" extension has not been set for
-            any data nodes defined in this module.</t>
-        <t>This module does not define any RPCs, actions, or notifications,
-            and thus the security consideration for such is not provided here.</t>
+
       </section>
       <section>
         <name>Considerations for the "ietf-netconf-server" YANG Module</name>
-        <t>This section is modeled after the template defined in <xref section="3.7.1" target="RFC8407"/>.</t>
-        <t>The "ietf-netconf-server" YANG module defines data nodes
-            that are designed to be accessed via YANG-based management
-            protocols, such as NETCONF <xref target="RFC6241"/> and RESTCONF
-            <xref target="RFC8040"/>.  The YANG-based management protocols
-            have to use a secure transport layer such as SSH <xref target="RFC4252"/>,
-            TLS <xref target="RFC8446"/>, or QUIC <xref target="RFC9000"/>.
-            The YANG-based management protocols also have to use mutual
+        <t>This section is modeled after the template described in <xref section="3.7.1" target="RFC9907"/>.</t>
+        <t>The "ietf-netconf-server" YANG module defines a data model
+            that is designed to be accessed via YANG-based management
+            protocols, such as the Network Configuration Protocol (NETCONF) <xref target="RFC6241"/> and RESTCONF
+            <xref target="RFC8040"/>.  These YANG-based management protocols
+            (1) have to use a secure transport layer (e.g., Secure Shell (SSH) <xref target="RFC4252"/>,
+            TLS <xref target="RFC8446"/>, and QUIC <xref target="RFC9000"/>) and (2) have to use mutual
             authentication.</t>
-        <t>The Network Access Control Model (NACM) <xref target="RFC8341"/>
-            provides the means to restrict access for particular users to a
-            pre-configured subset of all available protocol operations and
-            content.</t>
+        <t>The Network Configuration Access Control Model (NACM) <xref target="RFC8341"/>
+            provides the means to restrict access for particular NETCONF or RESTCONF users to a
+            preconfigured subset of all available NETCONF or RESTCONF protocol operations and
+        content.</t>
+
+        <t>None of the writable data nodes defined in this YANG module are
+            considered sensitive or vulnerable in network environments.
+            The NACM "default-deny-write" extension has not been set for
+        any data nodes defined in this module.</t>
+	        <t>None of the readable data nodes defined in this YANG module are
+            considered sensitive or vulnerable in network environments.
+            The NACM "default-deny-all" extension has not been set for
+		any data nodes defined in this module.</t>
+
+       <t>This YANG module does not define any RPCs, actions, or notifications; thus, the
+			security consideration for such is not provided here.</t>
+	
         <t>This YANG module uses groupings from
             other YANG modules that define nodes that may be considered
-            sensitive or vulnerable in network environments.  Please
-            review the Security Considerations for dependent YANG modules
+            sensitive or vulnerable in network environments.  Refer to the Security Considerations of <xref target="RFC7407" format="default"/>, <xref target="RFC9643" format="default"/>, <xref target="RFC9644" format="default"/>, and <xref target="RFC9645" format="default"/>
             for information as to which nodes may be considered sensitive
             or vulnerable in network environments.</t>
         <t>This YANG module uses groupings defined in
             other RFCs that define data nodes that do set the NACM "default-deny-all"
             and "default-deny-write" extensions.</t>
-        <t>None of the readable data nodes defined in this YANG module are
-            considered sensitive or vulnerable in network environments.
-            The NACM "default-deny-all" extension has not been set for
-            any data nodes defined in this module.</t>
-        <t>None of the writable data nodes defined in this YANG module are
-            considered sensitive or vulnerable in network environments.
-            The NACM "default-deny-write" extension has not been set for
-            any data nodes defined in this module.</t>
-        <t>This YANG module does not define any RPCs, actions, or notifications,
-            and thus the security consideration for such is not provided here.</t>
+
       </section>
     </section>
     <section>
       <name>IANA Considerations</name>
       <section>
-        <name>The "IETF XML" Registry</name>
-        <t>This document registers two URIs in the "ns" subregistry of the IETF XML
-          Registry <xref target="RFC3688"/>.  Following the format in
-          <xref target="RFC3688"/>, the following registrations are
-          requested:</t>
-        <artwork><![CDATA[
-   URI: urn:ietf:params:xml:ns:yang:ietf-netconf-client
-   Registrant Contact: The IESG
-   XML: N/A, the requested URI is an XML namespace.
+        <name>The IETF XML Registry</name>
+        <t>IANA has registered two URIs in the "ns" registry within the "IETF XML
+          Registry" group <xref target="RFC3688"/> as follows:</t>
 
-   URI: urn:ietf:params:xml:ns:yang:ietf-netconf-server
-   Registrant Contact: The IESG
-   XML: N/A, the requested URI is an XML namespace.
-]]></artwork>
+	  <dl spacing="compact" newline="false">
+	    <dt>URI:</dt><dd>urn:ietf:params:xml:ns:yang:ietf-netconf-client</dd>
+	    <dt>Registrant Contact:</dt><dd>The IESG</dd>
+	    <dt>XML:</dt><dd>N/A; the requested URI is an XML namespace.</dd>
+	  </dl>
+	  <dl spacing="compact" newline="false">
+	    <dt>URI:</dt><dd>urn:ietf:params:xml:ns:yang:ietf-netconf-server</dd>
+	    <dt>Registrant Contact:</dt><dd>The IESG</dd>
+	    <dt>XML:</dt><dd>N/A; the requested URI is an XML namespace.</dd>
+	  </dl>
       </section>
       <section>
-        <name>The "YANG Module Names" Registry</name>
-        <t>This document registers two YANG modules in the
-          YANG Module Names registry <xref target="RFC6020"/>.
-          Following the format in <xref target="RFC6020"/>, the
-          following registrations are requested:</t>
-        <artwork><![CDATA[
-   Name:         ietf-netconf-client
-   Namespace:    urn:ietf:params:xml:ns:yang:ietf-netconf-client
-   Prefix:       ncc
-   Reference:    RFC HHHH
-   Maintained by IANA:  N
-
-   Name:         ietf-netconf-server
-   Namespace:    urn:ietf:params:xml:ns:yang:ietf-netconf-server
-   Prefix:       ncs
-   Reference:    RFC HHHH
-   Maintained by IANA:  N
-]]></artwork>
+        <name>The YANG Module Names Registry</name>
+        <t>IANA has registered two YANG modules in the
+          "YANG Module Names" registry <xref target="RFC6020"/> within the "YANG Parameters" registry group as follows:</t>
+	  <dl spacing="compact" newline="false">
+	    <dt>Name:</dt>
+            <dd>ietf-netconf-client</dd>
+	    <dt>Maintained by IANA?</dt>
+	    <dd>N</dd>
+	    <dt>Namespace:</dt>
+	    <dd>urn:ietf:params:xml:ns:yang:ietf-netconf-client</dd>
+	    <dt>Prefix:</dt>
+	    <dd>ncc</dd>
+	    <dt>Reference:</dt>
+	    <dd>RFC 10009</dd>
+	  </dl>
+	  <dl spacing="compact" newline="false">
+	    <dt>Name:</dt>
+            <dd>ietf-netconf-server</dd>
+	    <dt>Maintained by IANA?</dt>
+	    <dd>N</dd>
+	    <dt>Namespace:</dt>
+	    <dd>urn:ietf:params:xml:ns:yang:ietf-netconf-server</dd>
+	    <dt>Prefix:</dt>
+	    <dd>ncs</dd>
+	    <dt>Reference:</dt>
+	    <dd>RFC 10009</dd>
+	  </dl>
       </section>
     </section>
   </middle>
   <back>
+    <displayreference target="I-D.ietf-netmod-system-config" to="SYSTEM-CONFIG" />
     <references>
       <name>References</name>
       <references>
@@ -2560,12 +2515,14 @@ module ietf-netconf-server {
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6020.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6241.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6242.xml"/>
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6991.xml"/>
+	
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9911.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7407.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7589.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7950.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8071.xml"/>
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>	
+	<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8341.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9642.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9643.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9644.xml"/>
@@ -2577,526 +2534,78 @@ module ietf-netconf-server {
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4252.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8040.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8340.xml"/>
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8341.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8342.xml"/>
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8407.xml"/>
+
+
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9907.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8446.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9000.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9640.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9641.xml"/>
-        <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-netconf-http-client-server.xml"/>
-        <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-netconf-netconf-client-server.xml"/>
-        <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-netconf-restconf-client-server.xml"/>
-        <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-netmod-system-config.xml"/>
+
+
+<!-- [I-D.ietf-netconf-http-client-server]
+draft-ietf-netconf-http-client-server-33
+companion document RFC 10011
+-->
+<reference anchor="PRE-RFC10011" target="https://www.rfc-editor.org/info/rfc10011">
+  <front>
+      <title>YANG Groupings for HTTP Clients and HTTP Servers</title>
+      <author initials="K." surname="Watsen" fullname="Kent Watsen">
+         <organization>Watsen Networks</organization>
+      </author>
+    <date month='June' year='2026'/>
+  </front>
+  <seriesInfo name="RFC" value="10010"/>
+  <seriesInfo name="DOI" value="10.17487/RFC10010"/>
+</reference>
+
+
+<!-- [I-D.ietf-netconf-restconf-client-server]
+draft-ietf-netconf-restconf-client-server-45
+companion document; RFC 10010
+-->
+<reference anchor="RFC10010" target="https://www.rfc-editor.org/info/rfc10010">
+  <front>
+      <title>A YANG Data Model for RESTCONF Clients and Servers</title>
+      <author initials="K." surname="Watsen" fullname="Kent Watsen">
+         <organization>Watsen Networks</organization>
+      </author>
+    <date month='June' year='2026'/>
+  </front>
+  <seriesInfo name="RFC" value="10010"/>
+  <seriesInfo name="DOI" value="10.17487/RFC10010"/>
+</reference>
+
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-netmod-system-config.xml"/>
       </references>
     </references>
-    <section anchor="change-log">
-      <name>Change Log</name>
-      <section>
-        <name>00 to 01</name>
-        <ul spacing="normal">
-          <li>
-            <t>Renamed "keychain" to "keystore".</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>01 to 02</name>
-        <ul spacing="normal">
-          <li>
-            <t>Added to ietf-netconf-client ability to connected to a cluster
-              of endpoints, including a reconnection-strategy.</t>
-          </li>
-          <li>
-            <t>Added to ietf-netconf-client the ability to configure connection-type
-              and also keep-alive strategy.</t>
-          </li>
-          <li>
-            <t>Updated both modules to accommodate new groupings in the ssh/tls
-              drafts.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>02 to 03</name>
-        <ul spacing="normal">
-          <li>
-            <t>Refined use of tls-client-grouping to add a must statement
-                 indicating that the TLS client must specify a client-certificate.</t>
-          </li>
-          <li>
-            <t>Changed 'netconf-client' to be a grouping (not a container).</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>03 to 04</name>
-        <ul spacing="normal">
-          <li>
-            <t>Added RFC 8174 to Requirements Language Section.</t>
-          </li>
-          <li>
-            <t>Replaced refine statement in ietf-netconf-client
-                 to add a mandatory true.</t>
-          </li>
-          <li>
-            <t>Added refine statement in ietf-netconf-server
-                 to add a must statement.</t>
-          </li>
-          <li>
-            <t>Now there are containers and groupings, for both the
-                 client and server models.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>04 to 05</name>
-        <ul spacing="normal">
-          <li>
-            <t>Now tree diagrams reference ietf-netmod-yang-tree-diagrams</t>
-          </li>
-          <li>
-            <t>Updated examples to inline key and certificates (no longer
-                 a leafref to keystore)</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>05 to 06</name>
-        <ul spacing="normal">
-          <li>
-            <t>Fixed change log missing section issue.</t>
-          </li>
-          <li>
-            <t>Updated examples to match latest updates to the crypto-types,
-                 trust-anchors, and keystore drafts.</t>
-          </li>
-          <li>
-            <t>Reduced line length of the YANG modules to fit within 69 columns.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>06 to 07</name>
-        <ul spacing="normal">
-          <li>
-            <t>Removed "idle-timeout" from "persistent" connection config.</t>
-          </li>
-          <li>
-            <t>Added "random-selection" for reconnection-strategy's "starts-with" enum.</t>
-          </li>
-          <li>
-            <t>Replaced "connection-type" choice default (persistent) with "mandatory true".</t>
-          </li>
-          <li>
-            <t>Reduced the periodic-connection's "idle-timeout" from 5 to 2 minutes.</t>
-          </li>
-          <li>
-            <t>Replaced reconnect-timeout with period/anchor-time combo.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>07 to 08</name>
-        <ul spacing="normal">
-          <li>
-            <t>Modified examples to be compatible with new crypto-types algs</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>08 to 09</name>
-        <ul spacing="normal">
-          <li>
-            <t>Corrected use of "mandatory true" for "address" leafs.</t>
-          </li>
-          <li>
-            <t>Updated examples to reflect update to groupings defined in the keystore draft.</t>
-          </li>
-          <li>
-            <t>Updated to use groupings defined in new TCP and HTTP drafts.</t>
-          </li>
-          <li>
-            <t>Updated copyright date, boilerplate template, affiliation, and folding algorithm.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>09 to 10</name>
-        <ul spacing="normal">
-          <li>
-            <t>Reformatted YANG modules.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>10 to 11</name>
-        <ul spacing="normal">
-          <li>
-            <t>Adjusted for the top-level "demux container" added to groupings
-                imported from other modules.</t>
-          </li>
-          <li>
-            <t>Added "must" expressions to ensure that keepalives are not configured
-                for "periodic" connections.</t>
-          </li>
-          <li>
-            <t>Updated the boilerplate text in module-level "description" statement
-                to match copyeditor convention.</t>
-          </li>
-          <li>
-            <t>Moved "expanded" tree diagrams to the Appendix.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>11 to 12</name>
-        <ul spacing="normal">
-          <li>
-            <t>Removed the "Design Considerations" section.</t>
-          </li>
-          <li>
-            <t>Removed the 'must' statement limiting keepalives in periodic
-                connections.</t>
-          </li>
-          <li>
-            <t>Updated models and examples to reflect removal of the "demux"
-                containers in the imported models.</t>
-          </li>
-          <li>
-            <t>Updated the "periodic-connnection" description statements to be more
-                like the RESTCONF draft, especially where it described dropping the
-                underlying TCP connection.</t>
-          </li>
-          <li>
-            <t>Updated text to better reference where certain examples come from
-                (e.g., which Section in which draft).</t>
-          </li>
-          <li>
-            <t>In the server model, commented out the "must 'pinned-ca-certs or
-                pinned-client-certs'" statement to reflect change made in the
-                TLS draft whereby the trust anchors MAY be defined externally.</t>
-          </li>
-          <li>
-            <t>Replaced the 'listen', 'initiate', and 'call-home' features
-                with boolean expressions.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>12 to 13</name>
-        <ul spacing="normal">
-          <li>
-            <t>Updated to reflect changes in trust-anchors drafts
-                (e.g., s/trust-anchors/truststore/g + s/pinned.//)</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>13 to 14</name>
-        <ul spacing="normal">
-          <li>
-            <t>Adjusting from change in TLS client model (removing the top-level
-                'certificate' container), by swapping refining-in a 'mandatory true'
-                statement with a 'must' statement outside the 'uses' statement.</t>
-          </li>
-          <li>
-            <t>Updated examples to reflect ietf-crypto-types change
-                (e.g., identities --&gt; enumerations)</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>14 to 15</name>
-        <ul spacing="normal">
-          <li>
-            <t>Refactored both the client and server modules similar to how the ietf-restconf-server
-                module was refactored in -13 of that draft, and the ietf-restconf-client grouping.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>15 to 16</name>
-        <ul spacing="normal">
-          <li>
-            <t>Added refinement to make "cert-to-name/fingerprint" be mandatory false.</t>
-          </li>
-          <li>
-            <t>Commented out refinement to "tls-server-grouping/client-authentication"
-                until a better "must" expression is defined.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>16 to 17</name>
-        <ul spacing="normal">
-          <li>
-            <t>Updated examples to include the "*-key-format" nodes.</t>
-          </li>
-          <li>
-            <t>Updated examples to remove the "required" nodes.</t>
-          </li>
-          <li>
-            <t>Updated examples to remove the "client-auth-defined-elsewhere" nodes.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>17 to 18</name>
-        <ul spacing="normal">
-          <li>
-            <t>Updated examples to reflect new "bag" addition to truststore.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>18 to 19</name>
-        <ul spacing="normal">
-          <li>
-            <t>Updated examples to remove the 'algorithm' nodes.</t>
-          </li>
-          <li>
-            <t>Updated examples to reflect the new TLS keepalives structure.</t>
-          </li>
-          <li>
-            <t>Added keepalives to the tcp-client-parameters section in the netconf-server SSH-based call-home example.</t>
-          </li>
-          <li>
-            <t>Added a TLS-based call-home example to the netconf-client example.</t>
-          </li>
-          <li>
-            <t>Added a "Note to Reviewers" note to first page.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>19 to 20</name>
-        <ul spacing="normal">
-          <li>
-            <t>Expanded "Data Model Overview section(s) [remove "wall" of tree diagrams].</t>
-          </li>
-          <li>
-            <t>Removed expanded tree diagrams that were listed in the Appendix.</t>
-          </li>
-          <li>
-            <t>Updated the Security Considerations section.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>20 to 21</name>
-        <ul spacing="normal">
-          <li>
-            <t>Cleaned up titles in the IANA Considerations section</t>
-          </li>
-          <li>
-            <t>Fixed issues found by the SecDir review of the "keystore" draft.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>21 to 22</name>
-        <ul spacing="normal">
-          <li>
-            <t>Addressed comments raised by YANG Doctor in the ct/ts/ks drafts.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>22 to 23</name>
-        <ul spacing="normal">
-          <li>
-            <t>Floated an 'if-feature' statement in a grouping down to where the grouping is used.</t>
-          </li>
-          <li>
-            <t>Clarified 'client-identity-mappings' for both the SSH and TLS transports.</t>
-          </li>
-          <li>
-            <t>For netconf-client, augmented-in a 'mapping-required' flag into 'client-identity-mappings'
-                only for the SSH transport, and refined-in a 'min-elements 1' only for the TLS transport.</t>
-          </li>
-          <li>
-            <t>Aligned modules with `pyang -f` formatting.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>23 to 24</name>
-        <ul spacing="normal">
-          <li>
-            <t>Replaced "base64encodedvalue==" with "BASE64VALUE=" in examples.</t>
-          </li>
-          <li>
-            <t>Minor editorial nits</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>24 to 25</name>
-        <ul spacing="normal">
-          <li>
-            <t>Fixed up the 'WG Web' and 'WG List' lines in YANG module(s)</t>
-          </li>
-          <li>
-            <t>Fixed up copyright (i.e., s/Simplified/Revised/) in YANG module(s)</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>25 to 26</name>
-        <ul spacing="normal">
-          <li>
-            <t>Added feature "central-netconf-client-supported" to top-level node "netconf-client".</t>
-          </li>
-          <li>
-            <t>Added feature "central-netconf-server-supported" to top-level node "netconf-server".</t>
-          </li>
-          <li>
-            <t>Clarified container "netconf-client-parameters" description statement.</t>
-          </li>
-          <li>
-            <t>Removed unneccesary "xmlns:x509c2n" in a NETCONF server configuration example.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>26 to 27</name>
-        <ul spacing="normal">
-          <li>
-            <t>Updated per Shepherd reviews impacting the suite of drafts.</t>
-          </li>
-          <li>
-            <t>Added "max-wait" leaf to the "reconnect-strategy" nodes.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>27 to 28</name>
-        <ul spacing="normal">
-          <li>
-            <t>Updated per Shepherd reviews impacting the suite of drafts.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>28 to 29</name>
-        <ul spacing="normal">
-          <li>
-            <t>Updated (implicitly) via Tom Petch reviews.</t>
-          </li>
-          <li>
-            <t>Fixed pattern statement for "leaf anchor-time".</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>29 to 30</name>
-        <ul spacing="normal">
-          <li>
-            <t>Addresses AD review comments.</t>
-          </li>
-          <li>
-            <t>Added note to Editor to fix line foldings.</t>
-          </li>
-          <li>
-            <t>Removed netconf-client-grouping, since it was empty.</t>
-          </li>
-          <li>
-            <t>Removed erronious statement "client-identity-mappings" must be enabled by a "feature".</t>
-          </li>
-          <li>
-            <t>Added Security Considerations text to also look a SC-section from imported modules.</t>
-          </li>
-          <li>
-            <t>Removed "A wrapper around the foobar parameters to avoid name collisions" text.</t>
-          </li>
-          <li>
-            <t>Added container "endpoints" to wrap list "endpoint".</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>30 to 31</name>
-        <ul spacing="normal">
-          <li>
-            <t>Addresses AD review by Rob Wilton.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>31 to 32</name>
-        <ul spacing="normal">
-          <li>
-            <t>Addresses 1st-round of IESG reviews.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>32 to 34</name>
-        <ul spacing="normal">
-          <li>
-            <t>Addresses issues found in OpsDir review of the ssh-client-server draft.</t>
-          </li>
-          <li>
-            <t>s/defines/presents/ in a few places.</t>
-          </li>
-          <li>
-            <t>Add refs to where the 'operational' and 'system' datastores are defined.</t>
-          </li>
-          <li>
-            <t>Renamed Security Considerations section s/Template for/Considerations for/</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>34 to 36</name>
-        <ul spacing="normal">
-          <li>
-            <t>Nothing changed.  Only bumped for automation...</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>37 to 38</name>
-        <ul spacing="normal">
-          <li>
-            <t>Updated 2nd paragraph in Security Considerations section to match RFC Editor's version for other drafts in the suite of client-server drafts.</t>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <name>38 to 39</name>
-        <ul spacing="normal">
-          <li>
-            <t>Updated to reflect some of Med's AD-review comments.</t>
-          </li>
-        </ul>
-      </section>
-    </section>
+
     <section numbered="false">
       <name>Acknowledgements</name>
       <t>The authors would like to thank the following for
         lively discussions on list and in the halls (ordered
         by first name):
-        Alan Luchuk,
-        Andy Bierman,
-        Balázs Kovács,
-        Benoit Claise,
-        Bert Wijnen,
-        David Lamparter,
-        Jürgen Schönwälder,
-        Ladislav Lhotka,
-        Martin Björklund,
-        Med Boucladair,
-        Mehmet Ersue,
-        Michal Vaško,
-        Phil Shafer,
-        Qiufang Ma,
-        Radek Krejci,
-        Ramkumar Dhanapal,
-        Rob Wilton,
-        Sean Turner,
-        and Tom Petch.</t>
+        <contact fullname="Alan Luchuk"/>,
+        <contact fullname="Andy Bierman"/>,
+        <contact fullname="Balázs Kovács"/>,
+        <contact fullname="Benoit Claise"/>,
+        <contact fullname="Bert Wijnen"/>,
+        <contact fullname="David Lamparter"/>,
+        <contact fullname="Jürgen Schönwälder"/>,
+        <contact fullname="Ladislav Lhotka"/>,
+        <contact fullname="Martin Björklund"/>,
+        <contact fullname="Med Boucadair"/>,
+        <contact fullname="Mehmet Ersue"/>,
+        <contact fullname="Michal Vaško"/>,
+        <contact fullname="Phil Shafer"/>,
+        <contact fullname="Qiufang Ma"/>,
+        <contact fullname="Radek Krejci"/>,
+        <contact fullname="Ramkumar Dhanapal"/>,
+        <contact fullname="Rob Wilton"/>,
+        <contact fullname="Sean Turner"/>,
+        and <contact fullname="Tom Petch"/>.</t>
     </section>
   </back>
+
 </rfc>
