@@ -134,7 +134,7 @@ tcp-client-server      |     /         |      |
 	     <tr>
               <td>http-client-server</td>
               <td>
-              <xref target="PRE-RFC10011"/></td>
+              <xref target="RFC10011"/></td>
             </tr>
           </tbody>
         </table>
@@ -2548,7 +2548,7 @@ module ietf-netconf-server {
 draft-ietf-netconf-http-client-server-33
 companion document RFC 10011
 -->
-<reference anchor="PRE-RFC10011" target="https://www.rfc-editor.org/info/rfc10011">
+<reference anchor="RFC10011" target="https://www.rfc-editor.org/info/rfc10011">
   <front>
       <title>YANG Groupings for HTTP Clients and HTTP Servers</title>
       <author initials="K." surname="Watsen" fullname="Kent Watsen">
