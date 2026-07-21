@@ -24,8 +24,8 @@
 
     <abstract>
       <t>This document presents two YANG modules: one module to
-          configure a Network
-Configuration Protocol (NETCONF) client and the other module to configure
+          con a Network
+Configuration Protocol (NETCONF) client and the other module to con
           a NETCONF server.  These modules support both the Secure Shell (SSH) and
           TLS transport protocols; they also support both standard NETCONF
           and NETCONF Call Home connections.</t>
@@ -38,8 +38,8 @@ Configuration Protocol (NETCONF) client and the other module to configure
 
       <name>Introduction</name>
       <t>This document presents two YANG modules <xref target="RFC7950"/>: one module
-        to configure a NETCONF <xref target="RFC6241"/> client and the other module
-        to configure a NETCONF server.  These modules support both NETCONF-over-SSH <xref target="RFC6242"/> and NETCONF-over-TLS <xref target="RFC7589"/>
+        to con a NETCONF <xref target="RFC6241"/> client and the other module
+        to con a NETCONF server.  These modules support both NETCONF-over-SSH <xref target="RFC6242"/> and NETCONF-over-TLS <xref target="RFC7589"/>
         as well as NETCONF Call Home connections <xref target="RFC8071"/>.</t>
       <section anchor="collective-effort">
         <name>Relation to Other RFCs</name>
@@ -58,7 +58,7 @@ Configuration Protocol (NETCONF) client and the other module to configure
             to referenced.  For example, the "crypto-types" RFC does not
             have any dependencies, whilst the "keystore" RFC depends on the
             "crypto-types" RFC.</t>
-    <figure><artwork align="left"><![CDATA[
+    <artwork align="left"><![CDATA[
                                crypto-types
                                  ^      ^
                                 /        \
@@ -80,7 +80,7 @@ tcp-client-server      |     /         |      |
    +-----------+    |        |              |      |       |
                |    |        |              |      |       |
                |    |        |              |      |       |
-            netconf-client-server       restconf-client-server]]></artwork></figure>
+            netconf-client-server       restconf-client-server]]></artwork>
 
           <table align="left" anchor="LabelDiagram">
           <name>Label in Diagram to RFC Mapping</name>
