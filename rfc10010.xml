@@ -1849,8 +1849,7 @@ module ietf-netconf-server {
     container client-identity-mappings {
       description
         "Specifies mappings through which NETCONF client X.509
-         certificates are used to determine a NETCONF username,
-         per RFC 7407.
+         certificates are used to determine a NETCONF username.
 
          For TLS-based transports, if no matching and valid
          cert-to-name list entry can be found, then the NETCONF
