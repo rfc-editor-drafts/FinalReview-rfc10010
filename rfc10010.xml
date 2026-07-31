@@ -179,7 +179,7 @@ tcp-client-server      |     /         |      |
           <t>The following diagram lists all the "feature" statements
           defined in the "ietf-netconf-client" module:</t>
 	  
-          <sourcecode type="yangtree"><![CDATA[
+          <sourcecode type=""><![CDATA[
 Features:
   +-- ssh-initiate
   +-- tls-initiate
@@ -594,12 +594,6 @@ module ietf-netconf-client {
   namespace "urn:ietf:params:xml:ns:yang:ietf-netconf-client";
   prefix ncc;
 
-  import ietf-yang-types {
-    prefix yang;
-    reference
-      "RFC 9911: Common YANG Data Types";
-  }
-
   import ietf-tcp-client {
     prefix tcpc;
     reference
@@ -624,6 +618,12 @@ module ietf-netconf-client {
       "RFC 9645: YANG Groupings for TLS Clients and TLS Servers";
   }
 
+  import ietf-yang-types {
+    prefix yang;
+    reference
+      "RFC 9911: Common YANG Data Types";
+  }
+			
   organization
     "IETF NETCONF (Network Configuration) Working Group";
 
@@ -815,9 +815,8 @@ module ietf-netconf-client {
 
   grouping netconf-client-listen-stack-grouping {
     description
-      "A grouping for configuring a NETCONF client
-       'listen' protocol stack for listening on a single port.  The
-       'listen' stack supports call home connections, as
+      "A grouping for configuring a NETCONF client to listen
+       to a port for call home connections, as
        described in RFC 8071.";
     reference
       "RFC 8071: NETCONF Call Home and RESTCONF Call Home";
@@ -934,14 +933,13 @@ module ietf-netconf-client {
             min-elements 1;
             ordered-by user;
             description
-              "A user-ordered list of endpoints that the NETCONF
-               client will attempt to connect to in the specified
-               sequence.  Defining more than one enables
-               high availability.";
+              "A non-empty user-ordered list of endpoints for 
+              this RESTCONF client to try to connect to in sequence.
+              Defining more than one enables high availability.";
             leaf name {
               type string;
               description
-                "An arbitrary name for the endpoint.";
+                "An arbitrary name for this endpoint.";
             }
             uses netconf-client-initiate-stack-grouping;
           } // list endpoint
@@ -982,8 +980,9 @@ module ietf-netconf-client {
                    utilization, albeit with increased delay in
                    NETCONF-server-to-NETCONF-client interactions.
 
-                   The NETCONF client SHOULD close the underlying
-                   TCP connection upon completing planned activities.
+                   The NETCONF client SHOULD gracefully close the
+                   underlying TCP connection upon completing planned
+			       activities.
 
                    Connections are established at the same start
                    time regardless of how long the previous 
@@ -2190,7 +2189,7 @@ module ietf-netconf-server {
         }
         container endpoints {
           description
-            "Container for the list of endpoints.";
+            "Container for a list of endpoints.";
           list endpoint {
             key "name";
             min-elements 1;
