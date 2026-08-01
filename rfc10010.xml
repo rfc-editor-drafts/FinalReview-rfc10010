@@ -23,7 +23,7 @@
     <workgroup>netconf</workgroup>
 
     <abstract>
-      <t>This document presents two YANG modules: one module to
+      <t>This document presents two YANG 1.1 modules: one module to
           con a Network
 Configuration Protocol (NETCONF) client and the other module to con
           a NETCONF server.  These modules support both the Secure Shell (SSH) and
@@ -37,16 +37,16 @@ Configuration Protocol (NETCONF) client and the other module to con
 
 
       <name>Introduction</name>
-      <t>This document presents two YANG modules <xref target="RFC7950"/>: one module
+      <t>This document presents two YANG 1.1 modules <xref target="RFC7950"/>: one module
         to con a NETCONF <xref target="RFC6241"/> client and the other module
         to con a NETCONF server.  These modules support both NETCONF-over-SSH <xref target="RFC6242"/> and NETCONF-over-TLS <xref target="RFC7589"/>
         as well as NETCONF Call Home connections <xref target="RFC8071"/>.</t>
       <section anchor="collective-effort">
         <name>Relation to Other RFCs</name>
-        <t>This document presents two YANG modules <xref target="RFC7950"/>
-            that are part of a collection of RFCs that work together
-            to, ultimately, support the configuration of both the clients
-            and servers of both the NETCONF <xref target="RFC6241"/> and
+        <t>This document presents two YANG 1.1 modules <xref target="RFC7950"/>
+            that belong to a collection of RFCs that are designed to work together. 
+            Ultimately, these modules support the configuration of clients
+            and servers for both the NETCONF <xref target="RFC6241"/> and
             RESTCONF <xref target="RFC8040"/> protocols.</t>
         <t> Primary dependency relationships between the YANG groupings
             defined in the various RFCs are presented in the below diagram.
@@ -82,7 +82,7 @@ tcp-client-server      |     /         |      |
                |    |        |              |      |       |
             netconf-client-server       restconf-client-server]]></artwork>
 
-          <table align="left" anchor="LabelDiagram">
+          <table anchor="LabelDiagram">
           <name>Label in Diagram to RFC Mapping</name>
           <tbody>
             <tr>
@@ -151,6 +151,16 @@ tcp-client-server      |     /         |      |
         </t>
       </section>
 
+<section>
+	<name>Conventions</name>
+	<t>Various examples in this document use XML <xref target="W3C.REC-xml-20081126"/> 
+  encoding.</t>
+
+  <t>Various examples in this document contain long lines that may be 
+  folded, as described in <xref target="RFC8792"/>.</t>
+</section>
+		
+
       <section>
         <name>Adherence to the NMDA</name>
         <t>This document is compliant with the Network Management Datastore
@@ -187,10 +197,8 @@ Features:
   +-- tls-listen
   +-- central-netconf-client-supported]]></sourcecode>
 
-          <!--<aside>-->
               <t>The diagram above uses syntax that is similar to but not
                 defined in <xref target="RFC8340"/>.</t>
-          <!--</aside>-->
           </section>
         <section toc="exclude">
           <name>Groupings</name>
@@ -2574,6 +2582,23 @@ draft-ietf-netmod-system-config-20
 Not a part of C463
 -->
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-netmod-system-config.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8792.xml"/>
+<reference anchor="W3C.REC-xml-20081126"
+target="https://www.w3.org/TR/2008/REC-xml-20081126/">
+  <front>
+    <title>Extensible Markup Language (XML) 1.0                                                            
+    (Fifth Edition)</title>
+    <author initials="T." surname="Bray" fullname="Tim Bray"/>
+    <author initials="J." surname="Paoli" fullname="Jean Paoli"/>
+    <author initials="C.M." surname="Sperberg-McQueen" fullname="C. M.                                     
+Sperberg-McQueen"/>
+    <author initials="E." surname="Maler" fullname="Eve Maler"/>
+    <author initials="F." surname="Yergeau" fullname="François Yergeau"/>
+    <date month="November" year="2008"/>
+  </front>
+  <seriesInfo name="World Wide Web Consortium                                                              
+                    Recommendation" value="REC-xml-20081126"/>
+</reference>
       </references>
     </references>
 
