@@ -28,7 +28,7 @@
 Configuration Protocol (NETCONF) client and the other module to con
           a NETCONF server.  These modules support both the Secure Shell (SSH) and
           TLS transport protocols; they also support both standard NETCONF
-          and NETCONF Call Home connections.</t>
+          and NETCONF call home connections.</t>
     </abstract>
 
   </front>
@@ -40,7 +40,7 @@ Configuration Protocol (NETCONF) client and the other module to con
       <t>This document presents two YANG 1.1 modules <xref target="RFC7950"/>: one module
         to con a NETCONF <xref target="RFC6241"/> client and the other module
         to con a NETCONF server.  These modules support both NETCONF-over-SSH <xref target="RFC6242"/> and NETCONF-over-TLS <xref target="RFC7589"/>
-        as well as NETCONF Call Home connections <xref target="RFC8071"/>.</t>
+        as well as NETCONF call home connections <xref target="RFC8071"/>.</t>
       <section anchor="collective-effort">
         <name>Relation to Other RFCs</name>
         <t>This document presents two YANG 1.1 modules <xref target="RFC7950"/>
@@ -262,7 +262,7 @@ HIDE_TEXT_FROM_FILE(refs/tree-netconf-client-grouping.no-expand.txt)
               <li>The "netconf-client-initiate-stack-grouping" defines the
                   configuration for a full NETCONF protocol stack for NETCONF
                   clients that initiate connections to NETCONF servers (as
-                  opposed to receiving call-home connections).</li>
+                  opposed to receiving call home connections).</li>
               <li>The "transport" choice node enables either the SSH or
                   TLS transport to be configured, with each option
                   enabled by a "feature" statement.</li>
@@ -309,7 +309,7 @@ HIDE_TEXT_FROM_FILE(refs/tree-netconf-client-grouping.no-expand.txt)
             <ul>
               <li>The "netconf-client-listen-stack-grouping" defines the
                   configuration for a full NETCONF protocol stack for NETCONF
-                  clients that receive call-home connections from NETCONF servers.</li>
+                  clients that receive call home connections from NETCONF servers.</li>
               <li>The "transport" choice node enables either the SSH or
                   TLS transport to be configured, with each option
                   enabled by a "feature" statement.</li>
@@ -367,7 +367,7 @@ HIDE_TEXT_FROM_FILE(refs/tree-netconf-client-grouping.no-expand.txt)
             <ul>
               <li>The "netconf-client-app-grouping" defines the configuration
                   for a NETCONF client that supports both initiating connections
-                  to NETCONF servers and receiving call-home connections from
+                  to NETCONF servers and receiving call home connections from
                   NETCONF servers.</li>
               <li>Both the "initiate" and "listen" subtrees are predicated by
                   "feature" statements.</li>
@@ -837,11 +837,11 @@ module ietf-netconf-client {
         container ssh {
           description
             "TCP, SSH, and NETCONF configuration to listen
-             for NETCONF-over-SSH Call Home connections.";
+             for NETCONF-over-SSH call home connections.";
           container tcp-server-parameters {
             description
               "TCP-level server parameters to listen for
-               NETCONF-over-SSH Call Home connections.";
+               NETCONF-over-SSH call home connections.";
             uses tcps:tcp-server-grouping {
               refine "local-bind/local-port" {
                 default "4334";
@@ -855,13 +855,13 @@ module ietf-netconf-client {
           container ssh-client-parameters {
             description
               "SSH-level client parameters to listen for
-               NETCONF-over-SSH Call Home connections.";
+               NETCONF-over-SSH call home connections.";
             uses sshc:ssh-client-grouping;
           }
           container netconf-client-parameters {
             description
               "NETCONF-level client parameters to listen for
-               NETCONF-over-SSH Call Home connections.";
+               NETCONF-over-SSH call home connections.";
             uses ncc:netconf-client-grouping;
           }
         }
@@ -871,11 +871,11 @@ module ietf-netconf-client {
         container tls {
           description
             "TCP, TLS, and NETCONF configuration to listen
-             for NETCONF-over-TLS Call Home connections.";
+             for NETCONF-over-TLS call home connections.";
           container tcp-server-parameters {
             description
               "TCP-level server parameters to listen for
-               NETCONF-over-TLS Call Home connections.";
+               NETCONF-over-TLS call home connections.";
             uses tcps:tcp-server-grouping {
               refine "local-bind/local-port" {
                 default "4335";
@@ -894,13 +894,13 @@ module ietf-netconf-client {
             }
             description
               "TLS-level client parameters to listen for
-               NETCONF-over-TLS Call Home connections.";
+               NETCONF-over-TLS call home connections.";
             uses tlsc:tls-client-grouping;
           }
           container netconf-client-parameters {
             description
               "NETCONF-level client parameters to listen for
-               NETCONF-over-TLS Call Home connections.";
+               NETCONF-over-TLS call home connections.";
             uses ncc:netconf-client-grouping;
           }
         }
@@ -1249,7 +1249,7 @@ Features:
               <li>The "netconf-server-listen-stack-grouping" defines the
                   configuration for a full NETCONF protocol stack for NETCONF
                   servers that listen for connections from NETCONF clients
-                  (as opposed to initiating call-home connections).</li>
+                  (as opposed to initiating call home connections).</li>
               <li>The "transport" choice node enables either the SSH or
                   TLS transport to be configured, with each option
                   enabled by a "feature" statement.</li>
@@ -1296,7 +1296,7 @@ Features:
             <ul>
               <li>The "netconf-server-callhome-stack-grouping" defines the
                   configuration for a full NETCONF protocol stack for NETCONF
-                  servers that initiate call-home connections
+                  servers that initiate call home connections
                   to NETCONF clients.</li>
               <li>The "transport" choice node enables either the SSH or
                   TLS transport to be configured, with each option
@@ -1355,7 +1355,7 @@ Features:
             <ul>
               <li>The "netconf-server-app-grouping" defines the configuration
                   for a NETCONF server that supports both listening for connections
-                  from NETCONF clients and initiating call-home connections to
+                  from NETCONF clients and initiating call home connections to
                   NETCONF clients.</li>
               <li>Both the "listen" and "call-home" subtrees must be enabled by
                   "feature" statements.</li>
@@ -2189,7 +2189,7 @@ module ietf-netconf-server {
         min-elements 1;
         description
           "List of NETCONF clients the NETCONF server is to
-           maintain simultaneous call-home connections with.";
+           maintain simultaneous call home connections with.";
         leaf name {
           type string;
           description
