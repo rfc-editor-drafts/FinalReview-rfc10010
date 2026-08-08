@@ -942,7 +942,7 @@ module ietf-netconf-client {
             ordered-by user;
             description
               "A non-empty user-ordered list of endpoints for 
-              this RESTCONF client to try to connect to in sequence.
+              this NETCONF client to try to connect to in sequence.
               Defining more than one enables high availability.";
             leaf name {
               type string;
