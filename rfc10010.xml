@@ -412,7 +412,7 @@ module: ietf-netconf-client
         <name>Example Usage</name>
         <t>The following example illustrates configuring a NETCONF
             client to initiate connections, using both the SSH and TLS
-            transport protocols, as well as to listen for call-home
+            transport protocols, as well as to listen for call home
             connections, again using both the SSH and TLS transport
             protocols.</t>
         <t>This example is consistent with the examples presented in
@@ -1157,7 +1157,7 @@ module ietf-netconf-client {
     <section anchor="netconf-server-model">
       <name>The "ietf-netconf-server" YANG Module</name>
       <t>The NETCONF server YANG data model presented in this section supports
-        both listening for connections and initiating call-home
+        both listening for connections and initiating call home
         connections, using either the SSH or TLS transport protocol.</t>
       <t>YANG feature statements are used to enable implementations to
         advertise which potentially uncommon parts of the data model the
