@@ -1188,7 +1188,7 @@ Features:
           <ul spacing="compact">
             <li>netconf-server-grouping</li>
             <li>netconf-server-listen-stack-grouping</li>
-            <li>netconf-server-callhome-stack-grouping</li>
+            <li>netconf-server-call-home-stack-grouping</li>
             <li>netconf-server-app-grouping</li>
           </ul>
           <t>Each of these groupings are presented in the following subsections.</t>
@@ -1207,7 +1207,7 @@ Features:
                   "NETCONF" part of a protocol stack.  It does not, for instance,
                   define any configuration for the "TCP", "SSH" or "TLS" protocol layers
                   (for that, see Sections <xref target="netconf-server-listen-stack-grouping" format="counter"/>
-                  and <xref target="netconf-server-callhome-stack-grouping" format="counter"/>).</li>
+                  and <xref target="netconf-server-call-home-stack-grouping" format="counter"/>).</li>
               <li>The "client-identity-mappings" node defines a mapping
                   from certificate fields to NETCONF user names.</li>
               <li>
@@ -1269,11 +1269,11 @@ Features:
             </ul>
           </section>
           <section anchor="netconf-server-callhome-stack-grouping">
-            <name>The "netconf-server-callhome-stack-grouping" Grouping</name>
+            <name>The "netconf-server-call-home-stack-grouping" Grouping</name>
             <t>The following tree diagram <xref target="RFC8340"/> illustrates the
-                "netconf-server-callhome-stack-grouping" grouping:</t>
+                "netconf-server-call-home-stack-grouping" grouping:</t>
             <sourcecode type="yangtree"><![CDATA[
-  grouping netconf-server-callhome-stack-grouping:
+  grouping netconf-server-call-home-stack-grouping:
     +-- (transport)
        +--:(ssh) {ssh-call-home}?
        |  +-- ssh
@@ -1294,7 +1294,7 @@ Features:
 
             <t>Comments:</t>
             <ul>
-              <li>The "netconf-server-callhome-stack-grouping" defines the
+              <li>The "netconf-server-call-home-stack-grouping" defines the
                   configuration for a full NETCONF protocol stack for NETCONF
                   servers that initiate call home connections
                   to NETCONF clients.</li>
@@ -1336,7 +1336,7 @@ Features:
           +-- endpoints
           |  +-- endpoint* [name]
           |     +-- name                                      string
-          |     +---u netconf-server-callhome-stack-grouping
+          |     +---u netconf-server-call-home-stack-grouping
           +-- connection-type
           |  +-- (connection-type)
           |     +--:(persistent-connection)
@@ -1365,8 +1365,8 @@ Features:
                 <ul spacing="compact">
                   <li>The "netconf-server-listen-stack-grouping" grouping is discussed in
                       <xref target="netconf-server-listen-stack-grouping"/>.</li>
-                  <li>The "netconf-server-callhome-stack-grouping" grouping is discussed in
-                      <xref target="netconf-server-callhome-stack-grouping"/>.</li>
+                  <li>The "netconf-server-call-home-stack-grouping" grouping is discussed in
+                      <xref target="netconf-server-call-home-stack-grouping"/>.</li>
                 </ul>
               </li>
             </ul>
@@ -2010,7 +2010,7 @@ module ietf-netconf-server {
     }
   }
 
-  grouping netconf-server-callhome-stack-grouping {
+  grouping netconf-server-call-home-stack-grouping {
     description
       "A grouping for configuring a NETCONF server
        'call-home' protocol stack for a single outbound
@@ -2211,7 +2211,7 @@ module ietf-netconf-server {
               description
                 "An arbitrary name for this endpoint.";
             }
-            uses netconf-server-callhome-stack-grouping;
+            uses netconf-server-call-home-stack-grouping;
           }
         }
         container connection-type {
