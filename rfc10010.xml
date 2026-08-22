@@ -23,7 +23,7 @@
     <workgroup>netconf</workgroup>
 
     <abstract>
-      <t>This document presents two YANG 1.1 modules: one module to
+      <t>This document introduces two YANG 1.1 modules: one module to
           con a Network
 Configuration Protocol (NETCONF) client and the other module to con
           a NETCONF server.  These modules support both the Secure Shell (SSH) and
@@ -37,13 +37,13 @@ Configuration Protocol (NETCONF) client and the other module to con
 
 
       <name>Introduction</name>
-      <t>This document presents two YANG 1.1 modules <xref target="RFC7950"/>: one module
+      <t>This document introduces two YANG 1.1 modules <xref target="RFC7950"/>: one module
         to con a NETCONF <xref target="RFC6241"/> client and the other module
         to con a NETCONF server.  These modules support both NETCONF-over-SSH <xref target="RFC6242"/> and NETCONF-over-TLS <xref target="RFC7589"/>
         as well as NETCONF call home connections <xref target="RFC8071"/>.</t>
       <section anchor="collective-effort">
         <name>Relation to Other RFCs</name>
-        <t>This document presents two YANG 1.1 modules <xref target="RFC7950"/>
+        <t>This document introduces two YANG 1.1 modules <xref target="RFC7950"/>
             that belong to a collection of RFCs that are designed to work together. 
             Ultimately, these modules support the configuration of clients
             and servers for both the NETCONF <xref target="RFC6241"/> and
@@ -642,7 +642,7 @@ module ietf-netconf-client {
      Author:   Kent Watsen <mailto:kent+ietf@watsen.net>";
 
   description
-    "This module contains a collection of YANG definitions
+    "This YANG module contains a collection of YANG definitions
      for configuring NETCONF clients.
 
      The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL',
@@ -662,13 +662,17 @@ module ietf-netconf-client {
      Legal Provisions Relating to IETF Documents
      (https://trustee.ietf.org/license-info).
 
+     All revisions of IETF and IANA published modules can be
+     found at the YANG Parameters registry group
+     (https://www.iana.org/assignments/yang-parameters).
+
      This version of this YANG module is part of RFC 10009
      (https://www.rfc-editor.org/info/rfc10009); see the RFC
      itself for full legal notices.";
 
   revision 2026-06-08 {
     description
-      "Initial version";
+      "Initial revision";
     reference
       "RFC 10010: A YANG Data Model for NETCONF Clients and Servers";
   }
@@ -1207,7 +1211,7 @@ Features:
                   "NETCONF" part of a protocol stack.  It does not, for instance,
                   define any configuration for the "TCP", "SSH" or "TLS" protocol layers
                   (for that, see Sections <xref target="netconf-server-listen-stack-grouping" format="counter"/>
-                  and <xref target="netconf-server-call-home-stack-grouping" format="counter"/>).</li>
+                  and <xref target="netconf-server-callhome-stack-grouping" format="counter"/>).</li>
               <li>The "client-identity-mappings" node defines a mapping
                   from certificate fields to NETCONF user names.</li>
               <li>
@@ -1366,7 +1370,7 @@ Features:
                   <li>The "netconf-server-listen-stack-grouping" grouping is discussed in
                       <xref target="netconf-server-listen-stack-grouping"/>.</li>
                   <li>The "netconf-server-call-home-stack-grouping" grouping is discussed in
-                      <xref target="netconf-server-call-home-stack-grouping"/>.</li>
+                      <xref target="netconf-server-callhome-stack-grouping"/>.</li>
                 </ul>
               </li>
             </ul>
@@ -1753,7 +1757,7 @@ module ietf-netconf-server {
      Author:   Kent Watsen <mailto:kent+ietf@watsen.net>";
 
   description
-    "This module contains a collection of YANG definitions
+    "This YANG module contains a collection of YANG definitions
      for configuring NETCONF servers.
 
      The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL',
@@ -1773,13 +1777,17 @@ module ietf-netconf-server {
      Legal Provisions Relating to IETF Documents
      (https://trustee.ietf.org/license-info).
 
+     All revisions of IETF and IANA published modules can be
+     found at the YANG Parameters registry group
+     (https://www.iana.org/assignments/yang-parameters).
+
      This version of this YANG module is part of RFC 10010
      (https://www.rfc-editor.org/info/rfc10010); see the RFC
      itself for full legal notices.";
 
   revision 2026-06-08 {
     description
-      "Initial version";
+      "Initial revision";
     reference
       "RFC 10010: A YANG Data Model for NETCONF Clients and Servers";
   }
