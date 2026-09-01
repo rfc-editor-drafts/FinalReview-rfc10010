@@ -2399,7 +2399,7 @@ module ietf-netconf-server {
             protocols, such as the Network Configuration Protocol (NETCONF) <xref target="RFC6241"/> and RESTCONF
             <xref target="RFC8040"/>.  These YANG-based management protocols
             (1) have to use a secure transport layer (e.g., Secure Shell (SSH) <xref target="RFC4252"/>,
-            TLS <xref target="RFC8446"/>, and QUIC <xref target="RFC9000"/>) and (2) have to use mutual
+            TLS <xref target="RFC9846"/>, and QUIC <xref target="RFC9000"/>) and (2) have to use mutual
             authentication.</t>
         <t>The Network Configuration Access Control Model (NACM) <xref target="RFC8341"/>
             provides the means to restrict access for particular NETCONF or RESTCONF users to a
@@ -2437,7 +2437,7 @@ module ietf-netconf-server {
             protocols, such as the Network Configuration Protocol (NETCONF) <xref target="RFC6241"/> and RESTCONF
             <xref target="RFC8040"/>.  These YANG-based management protocols
             (1) have to use a secure transport layer (e.g., Secure Shell (SSH) <xref target="RFC4252"/>,
-            TLS <xref target="RFC8446"/>, and QUIC <xref target="RFC9000"/>) and (2) have to use mutual
+            TLS <xref target="RFC9846"/>, and QUIC <xref target="RFC9000"/>) and (2) have to use mutual
             authentication.</t>
         <t>The Network Configuration Access Control Model (NACM) <xref target="RFC8341"/>
             provides the means to restrict access for particular NETCONF or RESTCONF users to a
@@ -2546,7 +2546,7 @@ module ietf-netconf-server {
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8340.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8342.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9907.xml"/>
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8446.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9846.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9000.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9640.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9641.xml"/>
